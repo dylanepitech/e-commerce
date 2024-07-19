@@ -11,7 +11,7 @@ Bonjours et bienvenu dans le e-commerce, ce projet d'école auras pour but de cr
 * Dylan Bouraoui
 
 ## Lancement du projet
-* git clone <URL> e-commerce
+* git clone url
 * cd Front/
 * npm install
 * npm run dev (lancerment du projet en local)

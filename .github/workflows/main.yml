@@ -1,6 +1,12 @@
 name: Line Check for .tsx Files
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   check-lines:
@@ -10,10 +16,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Debug - List all files
+        run: |
+          echo "Listing all files in the repository:"
+          find . -type f -name "*.tsx"
+
       - name: Check for large .tsx files
         run: |
+          echo "Checking for .tsx files exceeding 200 lines..."
           find . -type f -name "*.tsx" | while read file; do
+            echo "Checking $file..."
             line_count=$(wc -l < "$file")
+            echo "$file has $line_count lines."
             if [ "$line_count" -gt 200 ]; then
               echo "$file has $line_count lines, which exceeds the 200 line limit."
               exit 1

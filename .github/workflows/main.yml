@@ -1,0 +1,21 @@
+name: Line Check for .tsx Files
+
+on: [push, pull_request]
+
+jobs:
+  check-lines:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Check for large .tsx files
+        run: |
+          find . -type f -name "*.tsx" | while read file; do
+            line_count=$(wc -l < "$file")
+            if [ "$line_count" -gt 200 ]; then
+              echo "$file has $line_count lines, which exceeds the 200 line limit."
+              exit 1
+            fi
+          done

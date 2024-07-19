@@ -5,7 +5,7 @@ import "./index.css";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./errorPage";
 
-const Router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
@@ -15,6 +15,6 @@ const Router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={Router} />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

@@ -19,15 +19,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18' 
-
-      - name: Navigate to Front directory
-        working-directory: Front
+          node-version: '18' # Assurez-vous que cette version est installée
 
       - name: Install dependencies
         run: npm install
-        working-directory: Front
+        working-directory: Front # Spécifiez le répertoire où se trouve package.json
 
       - name: Run ESLint
         run: npx eslint '**/*.tsx'
-        working-directory: Front
+        working-directory: Front # Spécifiez le répertoire où se trouvent les fichiers .tsx

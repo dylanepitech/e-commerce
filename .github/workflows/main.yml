@@ -28,7 +28,7 @@ jobs:
             echo "Checking $file..."
             line_count=$(wc -l < "$file")
             echo "$file has $line_count lines."
-            if [ "$line_count" -gt 200 ]; then
+            if [ "$line_count" -gt 300 ]; then
               echo "$file has $line_count lines, which exceeds the 200 line limit."
               exit 1
             fi

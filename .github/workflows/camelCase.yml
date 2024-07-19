@@ -21,8 +21,13 @@ jobs:
         with:
           node-version: '18' 
 
+      - name: Navigate to Front directory
+        working-directory: Front
+
       - name: Install dependencies
         run: npm install
+        working-directory: Front
 
       - name: Run ESLint
         run: npx eslint '**/*.tsx'
+        working-directory: Front

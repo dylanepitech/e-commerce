@@ -6,7 +6,7 @@ type Props = {
   colors?: "red" | "black" | "green" | undefined;
 };
 
-const Color = {
+const color = {
   red: "bg-red-500",
   black: "bg-black text-white",
   green: "bg-emerald-500",
@@ -31,7 +31,7 @@ export default function Alert({ children, colors = undefined }: Props) {
   return (
     <div
       className={`w-auto max-w-60 min-w-40 bg-white shadow-lg shadow-black px-6 py-2 rounded-md absolute right-5 flex flex-col bottom-0 ${
-        colors === undefined ? "" : Color[colors]
+        colors === undefined ? "" : color[colors]
       }`}
       style={{
         transform: enter ? "translateY(-90vh)" : "translateY(0)",

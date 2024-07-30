@@ -15,6 +15,62 @@
   transition: color 0.9s ease; /* Transition pour la couleur du texte */
 }
 
+.custom-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 4px; 
+  background-color: #639d87;
+  bottom: -4px;
+  left: 0;
+  transition: width 0.8s ease-out; 
+}
+
+.custom-link:hover::after {
+  width: 100%; 
+}
+
+.custom-link:hover {
+  color: white; 
+  background-color: #639d87;
+}
+
+.custom-link-mobile {
+  position: relative;
+  display: inline-block;
+  padding: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+  transition: color 0.9s ease;
+  width: 100%;
+  height: 40px;
+  background-color: #ffffff; /* Fond blanc pour le texte */
+  z-index: 1; /* S'assurer que le texte reste au-dessus */
+}
+
+.custom-link-mobile::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5px; /* Largeur initiale de la bordure gauche */
+  background-color: #639d87;
+  z-index: -1; /* Placer derrière le contenu */
+  transition: width 0.9s ease; /* Transition de la largeur */
+}
+
+.custom-link-mobile:hover::before {
+  width: 100%; /* Transition pour recouvrir 100% de la largeur au survol */
+}
+
+.custom-link-mobile a {
+  color: inherit; /* Hériter la couleur pour s'adapter aux transitions */
+  text-decoration: none; /* Enlever la sous-ligne pour les liens */
+  position: relative; /* S'assurer que les liens sont positionnés correctement */
+  z-index: 2; /* Assurer que les liens restent au-dessus du pseudo-élément */
+}
+
 .border-dark {
   border: 2px solid #1e4347;
 }
@@ -28,26 +84,6 @@
 }
 .border-white {
   border: 2px solid white;
-}
-
-.custom-link::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 4px; /* Hauteur du trait au survol */
-  background-color: #639d87; /* Couleur du trait */
-  bottom: -4px;
-  left: 0;
-  transition: width 0.8s ease-out; /* Animation pour le déploiement du trait */
-}
-
-.custom-link:hover::after {
-  width: 100%; /* Étend le trait sur toute la largeur du lien */
-}
-
-.custom-link:hover {
-  color: white; /* Couleur du texte au survol */
-  background-color: #639d87; /* Fond du lien au survol */
 }
 
 .color-clear {

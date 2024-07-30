@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaUser, FaHeart, FaCartShopping } from "react-icons/fa6";
+import { Menu } from "lucide-react";
 import logo from "../assets/picture/logo.png";
 import cuisine from "../assets/picture/cuisine1.png";
 import douche from "../assets/picture/salle-de-bain.jpg";
@@ -8,21 +9,32 @@ import grosElectro from "../assets/picture/gros-électro.jpg";
 import petitElectro from "../assets/picture/petit-électro.webp";
 
 const Header: React.FC = () => {
-  const [isProductsVisible, setIsProductsVisible] = useState(false);
+  const [isProductsVisible, setIsProductsVisible] = useState<boolean>(false);
+  const [open, isOpen] = useState<boolean>(false);
 
   const toggleProductsVisibility = () => {
     setIsProductsVisible(!isProductsVisible);
   };
 
+  const openMobileMenu = () => {
+    open ? isOpen(false) : isOpen(true);
+  };
+
   return (
     <>
       <header className="flex items-center h-30 justify-between p-4 bg-custom-bg text-white">
-        <div className="flex items-center ml-10">
-          <img src={logo} alt="Logo" className="h-12 w-12" />
-          <h1 className="text-2xl font-extrabold -ml-4 mt-5 pb-1">Archideco</h1>
+        <div className="flex items-center ml-10 max-lg:ml-0">
+          <img
+            src={logo}
+            alt="Logo"
+            className="h-12 w-12 max-lg:h-8 max-lg:w-8"
+          />
+          <h1 className="text-2xl font-extrabold -ml-2 mt-3 pb-1 max-lg:text-sm">
+            Archideco
+          </h1>
         </div>
 
-        <nav className="flex-grow flex justify-center space-x-8 font-medium	">
+        <nav className="flex-grow flex justify-center space-x-8 font-medium max-lg:hidden">
           <a
             href="#"
             className="custom-link "
@@ -53,12 +65,45 @@ const Header: React.FC = () => {
             <FaCartShopping className="text-xl" />
             <span className="absolute top-0 right-0 h-2 w-2 bg-red-700 rounded-full"></span>
           </a>
+          <p
+            className="hidden max-lg:block hover:cursor-pointer"
+            onClick={openMobileMenu}
+          >
+            <Menu size={26} />
+          </p>
         </div>
       </header>
-
+      {/* Mobile */}
+      <section className="w-screen h-auto min-h-10 px-1">
+        <div
+          className={`w-full h-auto flex-col items-start pt-2 justify-between gap-2 transition-max-height duration-500 ease-in-out ${
+            open ? "flex" : "hidden -translate-y-20"
+          }`}
+        >
+          <a
+            href="#"
+            className="custom-link-mobile "
+            onClick={toggleProductsVisibility}
+          >
+            Nos produits
+          </a>
+          <a href="#" className="custom-link-mobile">
+            Actualités
+          </a>
+          <a href="#" className="custom-link-mobile">
+            Notre histoire
+          </a>
+          <a href="#" className="custom-link-mobile">
+            Contact
+          </a>
+        </div>
+      </section>
+      {/* Mobile */}
       <div
-        className={`overflow-hidden transition-max-height duration-500 ease-in-out ${
-          isProductsVisible ? "max-h-96" : "max-h-0"
+        className={`overflow-scroll ${
+          open ? "translate-y-3" : "-translate-y-10"
+        } transition-max-height duration-500 ease-in-out ${
+          isProductsVisible ? "max-h-auto" : "max-h-0"
         }`}
       >
         <div className="bg-green-clear text-black p-4 shadow-2xl">

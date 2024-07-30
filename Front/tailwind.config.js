@@ -4,16 +4,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "custom-bg": "#1E4347", // Exemple de couleur personnalisée
+        "custom-bg": "#1E4347",
       },
       border: {
         "border-l": "3px solid #639D87",
       },
       fontFamily: {
-        custom: ["MyCustomFont", "sans-serif"], // Exemple de police personnalisée
+        custom: ["MyCustomFont", "sans-serif"],
       },
       height: {
-        120: "120px", // Définir une hauteur personnalisée
+        120: "120px",
       },
     },
   },

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaUser, FaHeart, FaCartShopping } from "react-icons/fa6";
-import { Menu } from "lucide-react";
+import { Menu, ListX } from "lucide-react";
 import logo from "../assets/picture/logo.png";
 import cuisine from "../assets/picture/cuisine1.png";
 import douche from "../assets/picture/salle-de-bain.jpg";
@@ -69,7 +69,7 @@ const Header: React.FC = () => {
             className="hidden max-lg:block hover:cursor-pointer"
             onClick={openMobileMenu}
           >
-            <Menu size={26} />
+            {open ? <ListX size={26} /> : <Menu size={26} />}
           </p>
         </div>
       </header>

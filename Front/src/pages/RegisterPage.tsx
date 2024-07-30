@@ -1,5 +1,5 @@
 import Footer from "../components/Footer";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { ChangeEvent, useState } from "react";
 
 const RegisterPage = () => {
@@ -9,7 +9,7 @@ const RegisterPage = () => {
   const [password, setPassword] = useState<string>("");
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
   const [passwordIsValid, setPasswordIsValid] = useState<boolean | null>(null);
-  const [cgvChecked, setCgvChecked] = useState<boolean>(false);
+  const [cgvChecked, setCgvChecked] = useState<boolean | undefined>(undefined);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,6 +23,7 @@ const RegisterPage = () => {
     }
 
     if (!cgvChecked) {
+      setCgvChecked(false);
       isValid = false;
     }
 
@@ -182,7 +183,7 @@ const RegisterPage = () => {
                 J'accepte les conditions générales de vente
               </label>
             </div>
-            {cgvChecked === false && (
+            {cgvChecked == false && (
               <p className="text-red-500/55 text-sm mt-2">
                 Vous devez accepter les conditions générales de vente
               </p>

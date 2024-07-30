@@ -1,3 +1,55 @@
+/* src/index.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Styles pour les liens */
+.custom-link {
+  position: relative;
+  display: inline-block;
+  padding: 3px;
+  border-left: 5px solid #639d87; /* Bordure gauche */
+  border-radius: 2px;
+  overflow: hidden; /* Assurer que l'effet de survol reste dans les limites du lien */
+  transition: color 0.9s ease; /* Transition pour la couleur du texte */
+}
+
+.border-dark {
+  border: 2px solid #1e4347;
+}
+
+.border-clear {
+  border: 3px solid #639d87;
+}
+
+.bg-green-clear {
+  background-color: #1e4347;
+}
+.border-white {
+  border: 2px solid white;
+}
+
+.custom-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 4px; /* Hauteur du trait au survol */
+  background-color: #639d87; /* Couleur du trait */
+  bottom: -4px;
+  left: 0;
+  transition: width 0.8s ease-out; /* Animation pour le déploiement du trait */
+}
+
+.custom-link:hover::after {
+  width: 100%; /* Étend le trait sur toute la largeur du lien */
+}
+
+.custom-link:hover {
+  color: white; /* Couleur du texte au survol */
+  background-color: #639d87; /* Fond du lien au survol */
+}
+
+.color-clear {
+  color: #639d87;
+}

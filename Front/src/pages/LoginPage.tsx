@@ -22,7 +22,6 @@ const LoginPage = () => {
       );
       if (response.data.token) {
         console.log(response.data.token);
-        // Rediriger vers la page d'accueil ou une autre page
         window.location.href = "/dashboard";
       } else {
         setErreur(true);

@@ -1,27 +1,36 @@
-import React from 'react';
-import { User } from '../Types/User';
+import React, { createContext, useState, useEffect, ReactNode } from "react";
 
 interface AuthContextType {
-  currentUser: User | null;
-  setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>;
+  authToken: string | null;
+  setAuthToken: (token: string | null) => void;
+  isLoading: boolean;
 }
 
-export const CurrentUserContext = React.createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType>({
+  authToken: null,
+  setAuthToken: () => {},
+  isLoading: true,
+});
 
-export const CurrentUserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [currentUser, setCurrentUser] = React.useState<User | null>(null);
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  const [authToken, setAuthToken] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      setAuthToken(token);
+    }
+    setIsLoading(false);
+  }, []);
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
+    <AuthContext.Provider value={{ authToken, setAuthToken, isLoading }}>
       {children}
-    </CurrentUserContext.Provider>
+    </AuthContext.Provider>
   );
-};
-
-export const useCurrentUser = () => {
-  const context = React.useContext(CurrentUserContext);
-  if (!context) {
-    throw new Error('Erreur');
-  }
-  return context;
 };

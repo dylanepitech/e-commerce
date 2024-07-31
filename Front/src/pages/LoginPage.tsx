@@ -1,12 +1,16 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import Footer from "../components/Footer";
 import axios, { AxiosResponse } from "axios";
+import { AuthContext } from "../hooks/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [erreur, setErreur] = useState<boolean>(false);
   const [messageErreur, setMessageErreur] = useState<string>("");
+  const { setAuthToken } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setMessageErreur("");
@@ -21,8 +25,9 @@ const LoginPage = () => {
         }
       );
       if (response.data.token) {
-        console.log(response.data.token);
-        window.location.href = "/dashboard";
+        localStorage.setItem("authToken", response.data.token);
+        setAuthToken(response.data.token);
+        navigate("/dashboard");
       } else {
         setErreur(true);
         setMessageErreur("Votre email ou mot de passe est invalide");

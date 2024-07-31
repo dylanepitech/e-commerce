@@ -4,8 +4,9 @@ import { AuthContext, AuthProvider } from "./hooks/AuthContext";
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import ProtectedRoute from "./hooks/ProtectedRoute";
+import ProtectedRoute from "./hooks/ProtectedAdminRoute";
 import Dashboard from "./pages/Dashboard";
+import ProtectedAdminRoute from "./hooks/ProtectedAdminRoute";
 
 const AppRoutes: React.FC = () => {
   const { isLoading } = useContext(AuthContext);
@@ -16,12 +17,19 @@ const AppRoutes: React.FC = () => {
 
   return (
     <Routes>
+      {/* Toutes les routes non connecter  */}
       <Route path="/" element={<HomePage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
+
+      {/* Routes User connecter */}
       <Route element={<ProtectedRoute />}>
         <Route path="/dashboard" element={<Dashboard />} />
+        {/* ici */}
       </Route>
+
+      {/* Route Administrateur */}
+      <Route element={<ProtectedAdminRoute />}>{/* ICI */}</Route>
     </Routes>
   );
 };

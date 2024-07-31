@@ -48,11 +48,9 @@ const Header: React.FC = () => {
           <a href="#" className="custom-link">
             Notre histoire
           </a>
-          <a href="#" className="custom-link">
-            Contact
-          </a>
+          <a href="#">Contact</a>
         </nav>
-        <div className="flex items-center space-x-8 mr-10">
+        <div className="flex items-center space-x-10 mr-10 font-medium">
           <a href="#" className="relative flex items-center">
             <FaUser className="text-xl" />
             <span className="absolute top-0 right-0 h-2 w-2 bg-red-700 rounded-full"></span>
@@ -106,7 +104,7 @@ const Header: React.FC = () => {
           isProductsVisible ? "max-h-auto" : "max-h-0"
         }`}
       >
-        <div className="bg-green-clear text-black p-4 shadow-2xl">
+        <div className=" text-black p-4 shadow-2xl ">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <div className="flex flex-col items-center">
               <h2 className="text-l font-bold mb-3 text-white">Nos cuisines</h2>

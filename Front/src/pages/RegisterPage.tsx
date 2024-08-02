@@ -1,6 +1,7 @@
 import Footer from "../components/Footer";
 import axios from "axios";
 import { ChangeEvent, useState } from "react";
+import Header from "../components/Header";
 
 const RegisterPage = () => {
   const [firstname, setFirstname] = useState<string>("");
@@ -50,19 +51,20 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex min-h-full flex-col justify-center">
+      <Header />
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+        <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Créez votre compte !
         </h2>
       </div>
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="mb-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
               <label
                 htmlFor="firstname"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 max-md:px-2"
               >
                 Prénom
               </label>
@@ -82,7 +84,7 @@ const RegisterPage = () => {
             <div className="sm:col-span-3">
               <label
                 htmlFor="lastname"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 max-md:px-2"
               >
                 Nom
               </label>
@@ -103,7 +105,7 @@ const RegisterPage = () => {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-900 max-md:px-2"
             >
               Adresse Mail
             </label>
@@ -125,7 +127,7 @@ const RegisterPage = () => {
             <div className="flex items-center justify-between">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 max-md:px-2"
               >
                 Mot de passe
               </label>
@@ -148,7 +150,7 @@ const RegisterPage = () => {
             <div className="flex items-center justify-between">
               <label
                 htmlFor="password-confirmation"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 max-md:px-2"
               >
                 Confirmation du mot de passe
               </label>
@@ -163,7 +165,7 @@ const RegisterPage = () => {
                 }
                 type="password"
                 required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#639D87] sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#639D87] sm:text-sm sm:leading-6 max-md:px-2"
               ></input>
             </div>
           </div>
@@ -201,7 +203,7 @@ const RegisterPage = () => {
             </button>
           </div>
         </form>
-        <p className="mt-10 text-center text-sm text-gray-500">
+        <p className="mt-5 text-center text-sm text-gray-500">
           Déjà membre ?
           <a
             href="/login"

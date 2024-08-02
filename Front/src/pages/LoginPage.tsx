@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import Footer from "../components/Footer";
 import axios, { AxiosResponse } from "axios";
+import Header from "../components/Header";
 
 const LoginPage = () => {
   const [email, setEmail] = useState<string>("");
@@ -36,21 +37,22 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex min-h-full flex-col justify-center">
+            <Header />
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+        <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Connectez-vous à votre compte !
         </h2>
       </div>
       {erreur && (
         <p className="text-center text-red-500/50 text-sm">{messageErreur}</p>
       )}
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="mt-10 mb-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-900 max-md:px-2"
             >
               Adresse Mail
             </label>
@@ -72,14 +74,14 @@ const LoginPage = () => {
             <div className="flex items-center justify-between">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 max-md:px-2"
               >
                 Mot de passe
               </label>
               <div className="text-sm">
                 <a
                   href="#"
-                  className="font-semibold text-[#639D87] hover:text-[#1E4347]"
+                  className="font-semibold text-[#639D87] hover:text-[#1E4347] max-md:pr-2"
                 >
                   Mot de passe oublié ?
                 </a>
@@ -114,6 +116,7 @@ const LoginPage = () => {
             href="/register"
             className="font-semibold leading-6 text-[#639D87] hover:text-[#1E4347]"
           >
+            {" "}
             Créez-en un !
           </a>
         </p>

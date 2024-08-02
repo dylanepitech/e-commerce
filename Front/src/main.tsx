@@ -7,6 +7,7 @@ import ErrorPage from "./errorPage";
 import { CurrentUserProvider } from "./hooks/AuthContext";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import ProductPage from "./pages/ProductPage";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
     element: <RegisterPage />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "product",
+    element: <ProductPage />,
+    errorElement: <ErrorPage />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

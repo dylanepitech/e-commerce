@@ -119,7 +119,7 @@ const ProductPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <h1 className="flex py-2.5 px-5 text-sm font-medium text-black focus:outline-none bg-white rounded-lg border border-2 border-black hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                        <h1 className="flex py-2.5 px-5 text-sm font-medium text-black focus:outline-none bg-white max-lg:mt-4 rounded-lg border border-2 border-black hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                             Découvrez notre lave-vaisselle ultra-performant, parfait allié de votre cuisine moderne. Avec une efficacité énergétique de classe A, ce lave-vaisselle vous permet de réaliser des économies d'énergie tout en respectant l'environnement. Sa capacité maximale de 8 kg est idéale pour les familles nombreuses ou les repas de fête, offrant une grande flexibilité grâce à son panier ajustable. Doté d'une puissance d'essorage de 1400 tours par minute, il assure un nettoyage impeccable et un séchage rapide de votre vaisselle. Simplifiez votre quotidien avec ce lave-vaisselle à la fois efficace, économique et écologique.
                         </h1>
                     </div>

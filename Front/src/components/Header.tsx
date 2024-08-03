@@ -72,7 +72,7 @@ const Header: React.FC = () => {
         </div>
       </header>
       {/* Mobile */}
-      <section className="h-auto min-h-10 px-1">
+      <section className="h-auto px-1">
         <div
           className={`w-full h-auto flex-col items-start pt-2 justify-between gap-2 transition-max-height duration-500 ease-in-out ${
             open ? "flex" : "hidden -translate-y-20"

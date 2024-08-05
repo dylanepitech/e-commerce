@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/GothamLight.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Aquawax";
+  src: url("./assets/fonts/Aquawax\ Black\ Trial.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gotham-bold";
+  src: url("./assets/fonts/Gotham-Bold.otf") format("truetype");
+}

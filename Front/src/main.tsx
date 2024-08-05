@@ -9,13 +9,15 @@ import ErrorPage from "./errorPage";
 import { CurrentUserProvider } from "./hooks/AuthContext";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+
+import CategoryPage from "./pages/CategoryPage";
 import ProductPage from "./pages/ProductPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />
   },
   {
     path: "/login",
@@ -28,10 +30,17 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
+
+    path: "/category",
+    element: <CategoryPage />,
+    errorElement: <ErrorPage />,
+  },
+
     path: "product",
     element: <ProductPage />,
     errorElement: <ErrorPage />,
   }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

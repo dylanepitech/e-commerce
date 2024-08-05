@@ -1,6 +1,6 @@
 import Header from "../components/Header";
-import "../index.css"; // Assure-toi que ce chemin est correct
-import sampleImage from "../assets/picture/cuisine2.jpg"; // Remplacez par le bon chemin de votre image
+import "../index.css";
+import sampleImage from "../assets/picture/cuisine2.jpg";
 import logo from "../assets/picture/logo.png";
 import salleDeBain from "../assets/picture/Salle-de-bain2.jpg";
 import cuisineModerne from "../assets/picture/cuisineModerne.jpg";

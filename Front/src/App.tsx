@@ -7,6 +7,8 @@ import LoginPage from "./pages/LoginPage";
 import ProtectedRoute from "./hooks/ProtectedAdminRoute";
 import Dashboard from "./pages/Dashboard";
 import ProtectedAdminRoute from "./hooks/ProtectedAdminRoute";
+import CategoryPage from "./pages/CategoryPage";
+import ProductPage from "./pages/ProductPage";
 
 const AppRoutes: React.FC = () => {
   const { isLoading } = useContext(AuthContext);
@@ -21,6 +23,8 @@ const AppRoutes: React.FC = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/category" element={<CategoryPage />} />
+      <Route path="/product" element={<ProductPage />} />
 
       {/* Routes User connecter */}
       <Route element={<ProtectedRoute />}>

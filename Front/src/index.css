@@ -61,7 +61,11 @@
   background-color: #1e4347;
 }
 .border-white {
-  border: 2px solid white;
+  border: 3px solid white;
+}
+
+.border-green-dark {
+  border: 3px solid #1e4347;
 }
 
 .color-clear {

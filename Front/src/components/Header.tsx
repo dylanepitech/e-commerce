@@ -27,9 +27,9 @@ const Header: React.FC = () => {
           <img
             src={logo}
             alt="Logo"
-            className="h-12 w-12 max-lg:h-8 max-lg:w-8"
+            className="h-12 w-12 max-lg:h-10 max-lg:w-10"
           />
-          <h1 className="text-2xl font-extrabold -ml-2 mt-3 pb-1 max-lg:text-sm">
+          <h1 className="text-2xl font-extrabold -ml-2 mt-3 pt-1 max-lg:text-sm">
             Archideco
           </h1>
         </div>
@@ -50,17 +50,17 @@ const Header: React.FC = () => {
           </a>
           <a href="#">Contact</a>
         </nav>
-        <div className="flex items-center space-x-10 mr-10 font-medium">
+        <div className="flex items-center space-x-4 md:space-x-10 mr-4 md:mr-10 font-medium">
           <a href="#" className="relative flex items-center">
-            <FaUser className="text-xl" />
+            <FaUser className="text-base md:text-xl" />
             <span className="absolute top-0 right-0 h-2 w-2 bg-red-700 rounded-full"></span>
           </a>
           <a href="#" className="relative flex items-center">
-            <FaHeart className="text-xl" />
+            <FaHeart className="text-base md:text-xl" />
             <span className="absolute top-0 right-0 h-2 w-2 bg-red-700 rounded-full"></span>
           </a>
           <a href="#" className="relative flex items-center">
-            <FaCartShopping className="text-xl" />
+            <FaCartShopping className="text-base md:text-xl" />
             <span className="absolute top-0 right-0 h-2 w-2 bg-red-700 rounded-full"></span>
           </a>
           <p

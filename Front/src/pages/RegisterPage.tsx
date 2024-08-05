@@ -6,7 +6,6 @@ import famille from "../assets/picture/famille.jpg";
 
 import { useNavigate } from "react-router-dom";
 
-
 const RegisterPage = () => {
   const [firstname, setFirstname] = useState<string>("");
   const [lastname, setLastname] = useState<string>("");
@@ -43,15 +42,20 @@ const RegisterPage = () => {
             lastname: lastname,
             email: email,
             password: password,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
           }
         );
         if (response.data.status == 200) {
           navigate("/login");
         } else {
-          location.reload();
+          // location.reload();
         }
       } catch (error) {
-        location.reload();
+        // location.reload();
       }
     }
   };
@@ -61,7 +65,11 @@ const RegisterPage = () => {
       <Header />
       <main className="flex justify-center items-center bg-green-vertical">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white rounded-lg max-lg:hidden border-2">
-          <img src={famille} alt="famille" className="w-full h-auto rounded-lg" />
+          <img
+            src={famille}
+            alt="famille"
+            className="w-full h-auto rounded-lg"
+          />
         </div>
         <div className="mb-10 mt-10 sm:mx-auto sm:w-full sm:max-w-sm bg-white px-10 pb-5 rounded-lg max-md:mx-5 relative">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -191,7 +199,10 @@ const RegisterPage = () => {
                   }
                   className="h-4 w-4 text-[#639D87] focus:ring-[#639D87] border-gray-300 rounded"
                 />
-                <label htmlFor="cgv" className="ml-2 block text-sm text-gray-900">
+                <label
+                  htmlFor="cgv"
+                  className="ml-2 block text-sm text-gray-900"
+                >
                   J'accepte les conditions générales de vente
                 </label>
               </div>

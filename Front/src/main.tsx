@@ -1,18 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css"; // Assure-toi que ce chemin est correct
+import "./index.css";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./errorPage";
 import { CurrentUserProvider } from "./hooks/AuthContext";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import CategoryPage from "./pages/CategoryPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />
   },
   {
     path: "/login",
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
   {
     path: "register",
     element: <RegisterPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/category",
+    element: <CategoryPage />,
     errorElement: <ErrorPage />,
   },
 ]);

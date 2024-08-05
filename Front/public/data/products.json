@@ -1,0 +1,77 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "image": "src/assets/picture/cuisine1.png",
+      "title": "Sobre",
+      "price": 1000
+    },
+    {
+      "id": 2,
+      "image": "src/assets/picture/cuisine1.png",
+      "title": "Eveil",
+      "price": 2000
+    },
+    {
+      "id": 3,
+      "image": "src/assets/picture/cuisine1.png",
+      "title": "Rive Droite",
+      "price": 3000
+    },
+    {
+      "id": 4,
+      "image": "src/assets/picture/cuisine1.png",
+      "title": "Charme",
+      "price": 4000
+    },
+    {
+      "id": 5,
+      "image": "src/assets/picture/cuisine1.png",
+      "title": "Chill",
+      "price": 5000
+    },
+    {
+      "id": 6,
+      "image": "src/assets/picture/cuisine1.png",
+      "title": "Express",
+      "price": 6000
+    },
+    {
+      "id": 7,
+      "image": "src/assets/picture/cuisine1.png",
+      "title": "Cacao",
+      "price": 7000
+    },
+    {
+      "id": 8,
+      "image": "src/assets/picture/cuisine1.png",
+      "title": "Cacao",
+      "price": 8000
+    },
+    {
+      "id": 9,
+      "image": "src/assets/picture/cuisine1.png",
+      "title": "Cacao",
+      "price": 9000
+    },
+    {
+      "id": 10,
+      "image": "src/assets/picture/cuisine1.png",
+      "title": "Cacao",
+      "price": 10000
+    },
+    {
+      "id": 11,
+      "image": "src/assets/picture/cuisine1.png",
+      "title": "Cacao",
+      "price": 11000
+    },
+    {
+      "id": 12,
+      "image": "src/assets/picture/cuisine1.png",
+      "title": "Cacao",
+      "price": 12000
+    }
+    
+  ]
+}

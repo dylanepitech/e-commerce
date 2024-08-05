@@ -8,7 +8,7 @@ export default function ErrorPage(): ReactElement {
       <img src="./404.gif" alt="" />
       <h2 className="text-4xl">Oups... Une érreur est survenue</h2>
       <p className="text-xl">
-        Retourner en l'accueil
+        Retourner à l'accueil 
         <Link className="text-blue-500" to={"/"}>
           ici
         </Link>

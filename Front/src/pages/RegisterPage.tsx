@@ -4,6 +4,9 @@ import { ChangeEvent, useState } from "react";
 import Header from "../components/Header";
 import famille from "../assets/picture/famille.jpg";
 
+import { useNavigate } from "react-router-dom";
+
+
 const RegisterPage = () => {
   const [firstname, setFirstname] = useState<string>("");
   const [lastname, setLastname] = useState<string>("");
@@ -12,10 +15,12 @@ const RegisterPage = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
   const [passwordIsValid, setPasswordIsValid] = useState<boolean | null>(null);
   const [cgvChecked, setCgvChecked] = useState<boolean | undefined>(undefined);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let isValid = true;
+
+    let isValid: boolean = true;
 
     if (password !== passwordConfirmation) {
       setPasswordIsValid(false);
@@ -41,7 +46,7 @@ const RegisterPage = () => {
           }
         );
         if (response.data.status == 200) {
-          window.location.href = "/login";
+          navigate("/login");
         } else {
           location.reload();
         }

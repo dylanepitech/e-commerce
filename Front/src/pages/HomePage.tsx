@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../components/Header";
 import "../index.css"; // Assure-toi que ce chemin est correct
 import sampleImage from "../assets/picture/cuisine2.jpg"; // Remplacez par le bon chemin de votre image
@@ -9,7 +8,7 @@ import électroménager from "../assets/picture/électromenagerInterieur.jpg";
 import salonModerne from "../assets/picture/salonModerne.jpg";
 import croquisCuisine from "../assets/picture/croquisCuisine.jpg";
 
-const HomePage: React.FC = () => {
+const HomePage = () => {
   return (
     <div className="min-h-screen bg-green-vertical">
       <Header />

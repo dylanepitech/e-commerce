@@ -26,6 +26,7 @@ const LoginPage = () => {
           password,
         }
       );
+      console.log(response.data);
       if (response.data.token) {
         localStorage.setItem("authToken", response.data.token);
         setAuthToken(response.data.token);
@@ -36,6 +37,7 @@ const LoginPage = () => {
       }
     } catch (error) {
       setErreur(true);
+      console.log("error");
       setMessageErreur("Votre email ou mot de passe est invalide");
       console.error(`error ${error}`);
     }

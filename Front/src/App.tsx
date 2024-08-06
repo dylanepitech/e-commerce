@@ -9,6 +9,8 @@ import Dashboard from "./pages/Dashboard";
 import ProtectedAdminRoute from "./hooks/ProtectedAdminRoute";
 import CategoryPage from "./pages/CategoryPage";
 import ProductPage from "./pages/ProductPage";
+import ResetPwdPage from "./pages/ResetPwdPage";
+import ResetPwdBisPage from "./pages/ResetPwdBisPage";
 
 const AppRoutes: React.FC = () => {
   const { isLoading } = useContext(AuthContext);
@@ -25,6 +27,8 @@ const AppRoutes: React.FC = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/category" element={<CategoryPage />} />
       <Route path="/product" element={<ProductPage />} />
+      <Route path="/resetpwd" element={<ResetPwdPage />} />
+      <Route path="/resetpwdbis" element={<ResetPwdBisPage />} />
 
       {/* Routes User connecter */}
       <Route element={<ProtectedRoute />}>

@@ -27,12 +27,12 @@ const AppRoutes: React.FC = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/category" element={<CategoryPage />} />
       <Route path="/product" element={<ProductPage />} />
-      <Route path="/resetpwd" element={<ResetPwdPage />} />
-      <Route path="/resetpwdbis" element={<ResetPwdBisPage />} />
 
       {/* Routes User connecter */}
       <Route element={<ProtectedRoute />}>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/resetpwd" element={<ResetPwdPage />} />
+        <Route path="/resetpwdbis" element={<ResetPwdBisPage />} />
         {/* ici */}
       </Route>
 

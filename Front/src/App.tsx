@@ -4,13 +4,14 @@ import { AuthContext, AuthProvider } from "./hooks/AuthContext";
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import ProtectedRoute from "./hooks/ProtectedAdminRoute";
+import ProtectedRoute from "./hooks/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import ProtectedAdminRoute from "./hooks/ProtectedAdminRoute";
 import CategoryPage from "./pages/CategoryPage";
 import ProductPage from "./pages/ProductPage";
 import ResetPwdPage from "./pages/ResetPwdPage";
 import ResetPwdBisPage from "./pages/ResetPwdBisPage";
+import CGVCGUPage from "./pages/CGVCGUPage";
 
 const AppRoutes: React.FC = () => {
   const { isLoading } = useContext(AuthContext);
@@ -27,12 +28,14 @@ const AppRoutes: React.FC = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/category" element={<CategoryPage />} />
       <Route path="/product" element={<ProductPage />} />
-      <Route path="/resetpwd" element={<ResetPwdPage />} />
-      <Route path="/resetpwdbis" element={<ResetPwdBisPage />} />
+      <Route path="/cgvcgu" element={<CGVCGUPage />} />
+
 
       {/* Routes User connecter */}
       <Route element={<ProtectedRoute />}>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/resetpwd" element={<ResetPwdPage />} />
+        <Route path="/resetpwdbis" element={<ResetPwdBisPage />} />
         {/* ici */}
       </Route>
 

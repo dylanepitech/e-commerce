@@ -20,7 +20,7 @@ const CGVCGUPage = () => {
             <div className="space-y-12">
               <div>
                 <h3 className="text-2xl gotham-book font-bold">
-                  Introduction
+                  1. Conditions préalables
                 </h3>
                 <p className="leading-relaxed">
                   Les présentes conditions générales de vente (CGV) s'appliquent
@@ -36,7 +36,7 @@ const CGVCGUPage = () => {
 
               <div>
                 <h3 className="text-2xl gotham-book font-bold">
-                  Produits et Services
+                  2. Produits et Services
                 </h3>
                 <p className="leading-relaxed">
                   Les produits proposés à la vente sont ceux qui figurent sur le
@@ -50,8 +50,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Commandes
+                <h3 className="text-2xl gotham-book font-bold">
+                  3. Commandes
                 </h3>
                 <p className="leading-relaxed">
                   Les commandes peuvent être passées en ligne sur le site
@@ -66,7 +66,7 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">Prix</h3>
+                <h3 className="text-2xl gotham-book font-bold">4. Prix</h3>
                 <p className="leading-relaxed">
                   Les prix sont indiqués en euros, toutes taxes comprises (TTC),
                   hors frais de livraison. ArchiDeco se réserve le droit de
@@ -79,8 +79,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Paiement
+                <h3 className="text-2xl gotham-book font-bold">
+                  5. Paiement
                 </h3>
                 <p className="leading-relaxed">
                   Le règlement des commandes s'effectue par carte bancaire ou
@@ -92,8 +92,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Livraison
+                <h3 className="text-2xl gotham-book font-bold">
+                  6. Livraison
                 </h3>
                 <p className="leading-relaxed">
                   Les produits sont livrés à l'adresse de livraison indiquée
@@ -107,8 +107,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Droit de rétractation
+                <h3 className="text-2xl gotham-book font-bold">
+                  7. Droit de rétractation
                 </h3>
                 <p className="leading-relaxed">
                   Conformément à la législation en vigueur, le client dispose
@@ -122,8 +122,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Garantie
+                <h3 className="text-2xl gotham-book font-bold">
+                  8. Garantie
                 </h3>
                 <p className="leading-relaxed">
                   Tous les produits fournis par ArchiDeco bénéficient de la
@@ -138,8 +138,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Responsabilité
+                <h3 className="text-2xl gotham-book font-bold">
+                  9. Responsabilité
                 </h3>
                 <p className="leading-relaxed">
                   ArchiDeco ne saurait être tenue pour responsable des dommages
@@ -152,7 +152,7 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">Litiges</h3>
+                <h3 className="text-2xl gotham-book font-bold">10. Litiges</h3>
                 <p className="leading-relaxed">
                   Les présentes CGV sont soumises à la loi française. En cas de
                   litige, une solution amiable sera recherchée avant toute
@@ -176,8 +176,8 @@ const CGVCGUPage = () => {
 
             <div className="space-y-12">
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Introduction
+                <h3 className="text-2xl gotham-book font-bold">
+                  1. Conditions préalables
                 </h3>
                 <p className="leading-relaxed">
                   Les présentes conditions générales d'utilisation (CGU)
@@ -190,8 +190,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Accès au site
+                <h3 className="text-2xl gotham-book font-bold">
+                  2. Accès au site
                 </h3>
                 <p className="leading-relaxed">
                   L'accès au site archideco.com est gratuit. Tous les coûts
@@ -204,8 +204,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Propriété Intellectuelle
+                <h3 className="text-2xl gotham-book font-bold">
+                  3. Propriété Intellectuelle
                 </h3>
                 <p className="leading-relaxed">
                   Le contenu du site, incluant, de façon non limitative, les
@@ -220,8 +220,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Données Personnelles
+                <h3 className="text-2xl gotham-book font-bold">
+                  4. Données Personnelles
                 </h3>
                 <p className="leading-relaxed">
                   ArchiDeco s'engage à protéger les données personnelles des
@@ -237,8 +237,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Responsabilité
+                <h3 className="text-2xl gotham-book font-bold">
+                  5. Responsabilité
                 </h3>
                 <p className="leading-relaxed">
                   ArchiDeco met tout en œuvre pour offrir aux utilisateurs des
@@ -251,8 +251,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Liens Hypertextes
+                <h3 className="text-2xl gotham-book font-bold">
+                  6. Liens Hypertextes
                 </h3>
                 <p className="leading-relaxed">
                   Le site archideco.com peut contenir des liens hypertextes vers
@@ -267,7 +267,7 @@ const CGVCGUPage = () => {
 
               <div>
                 <h3 className="text-2xl gotham-book font-bold">
-                  Modification des CGU
+                  7. Modification des CGU
                 </h3>
                 <p className="leading-relaxed">
                   ArchiDeco se réserve le droit de modifier à tout moment les
@@ -279,8 +279,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Droit Applicable
+                <h3 className="text-2xl gotham-book font-bold">
+                  8. Droit Applicable
                 </h3>
                 <p className="leading-relaxed">
                   Les présentes CGU sont régies par la loi française. En cas de
@@ -293,8 +293,8 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">
-                  Services Interactifs
+                <h3 className="text-2xl gotham-book font-bold">
+                  9. Services Interactifs
                 </h3>
                 <p className="leading-relaxed">
                   Le site archideco.com peut proposer des services interactifs
@@ -307,7 +307,7 @@ const CGVCGUPage = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl  gotham-book font-bold">Contact</h3>
+                <h3 className="text-2xl gotham-book font-bold">10. Contact</h3>
                 <p className="leading-relaxed">
                   Pour toute question concernant nos CGV et CGU, veuillez
                   contacter notre service client à l'adresse

@@ -1,9 +1,10 @@
 import { ChangeEvent, useContext, useState } from "react";
 import Footer from "../components/Footer";
-import axios, { AxiosResponse } from "axios";
+import { useToast } from '@chakra-ui/react'
 import Header from "../components/Header";
 import famille from "../assets/picture/famille.jpg";
 import { AuthContext } from "../hooks/AuthContext";
+import { login } from "../Requests/AuthRequest";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
@@ -13,31 +14,44 @@ const LoginPage = () => {
   const [messageErreur, setMessageErreur] = useState<string>("");
   const { setAuthToken } = useContext(AuthContext);
   const navigate = useNavigate();
+  const toast = useToast()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setMessageErreur("");
     setErreur(false);
     e.preventDefault();
     try {
-      const response: AxiosResponse<any> = await axios.post(
-        "http://127.0.0.1:8000/api/login_check",
-        {
-          email,
-          password,
-        }
-      );
-      if (response.data.token) {
-        localStorage.setItem("authToken", response.data.token);
-        setAuthToken(response.data.token);
-        navigate("/dashboard");
+      const response = await login(email, password);
+      if (response.token) {
+        localStorage.setItem("authToken", response.token);
+        setAuthToken(response.token);
+        navigate("/profile");
+
+        toast({
+          title: "Connexion réussie",
+          description: '',
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+        });
       } else {
-        setErreur(true);
-        setMessageErreur("Votre email ou mot de passe est invalide");
+        toast({
+          title: "Identifiants invalid",
+          description: '',
+          status: 'error',
+          duration: 4000,
+          isClosable: true,
+        });
       }
+
     } catch (error) {
-      setErreur(true);
-      setMessageErreur("Votre email ou mot de passe est invalide");
-      console.error(`error ${error}`);
+      toast({
+        title: "Identifiants invalid",
+        description: '',
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      });
     }
   };
 
@@ -49,7 +63,7 @@ const LoginPage = () => {
           <p className="text-center text-red-500/50 text-sm">{messageErreur}</p>
         )}
         <div className="mt-10 mb-10 sm:mx-auto sm:w-full sm:max-w-sm bg-white p-10 rounded-lg max-md:p-5 relative">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-white bg-[#639D87] rounded-t-lg absolute left-0 top-0 w-full py-2">
               Connexion
             </h2>

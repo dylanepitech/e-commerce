@@ -1,10 +1,10 @@
 import Footer from "../components/Footer";
-import axios from "axios";
 import { ChangeEvent, useState } from "react";
 import Header from "../components/Header";
 import famille from "../assets/picture/famille.jpg";
-
+import { useToast } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom";
+import { register } from "../Requests/AuthRequest";
 
 
 const RegisterPage = () => {
@@ -16,6 +16,8 @@ const RegisterPage = () => {
   const [passwordIsValid, setPasswordIsValid] = useState<boolean | null>(null);
   const [cgvChecked, setCgvChecked] = useState<boolean | undefined>(undefined);
   const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+  const toast = useToast()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,22 +38,36 @@ const RegisterPage = () => {
 
     if (isValid) {
       try {
-        const response = await axios.post(
-          "http://127.0.0.1:8000/api/register",
-          {
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            password: password,
-          }
-        );
-        if (response.data.status == 200) {
-          navigate("/login");
+        const response = await register(firstname, lastname, email, password);
+        console.log(response)
+        if (typeof response === 'string') {
+          setError(response);
+          toast({
+            title: "Erreur d'inscription",
+            description: error,
+            status: 'error',
+            duration: 4000,
+            isClosable: true,
+          });
         } else {
-          location.reload();
+          console.log(response)
+          toast({
+            title: "Inscription réussie",
+            description: response.message,
+            status: 'success',
+            duration: 4000,
+            isClosable: true,
+          });
+          navigate('/login');
         }
-      } catch (error) {
-        location.reload();
+      } catch (err: any) {
+        toast({
+          title: "Erreur d'inscription",
+          description: err.message,
+          status: 'error',
+          duration: 4000,
+          isClosable: true,
+        });
       }
     }
   };
@@ -205,6 +221,7 @@ const RegisterPage = () => {
                   Les mots de passe ne correspondent pas
                 </p>
               )}
+
               <button
                 type="submit"
                 className="mt-4 flex w-full justify-center rounded-md bg-[#639D87] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#1E4347] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#639D87]"

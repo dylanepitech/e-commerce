@@ -16,10 +16,26 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const toast = useToast()
 
+  let isValid: boolean = true;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (!emailRegex.test(email)) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
+  if (password.length < 6) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setMessageErreur("");
     setErreur(false);
     e.preventDefault();
+ 
     try {
       const response = await login(email, password);
       if (response.token) {
@@ -52,6 +68,7 @@ const LoginPage = () => {
         duration: 4000,
         isClosable: true,
       });
+
     }
   };
 

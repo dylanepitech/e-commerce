@@ -1,4 +1,5 @@
 /* src/index.css */
+@import "./fonts.css";
 
 @tailwind base;
 @tailwind components;
@@ -70,4 +71,16 @@
 
 .color-clear {
   color: #639d87;
+}
+
+.aquawax-font {
+  font-family: "Aquawax", sans-serif;
+}
+
+.gotham-font {
+  font-family: "Gotham", sans-serif;
+}
+
+.gotham-font-bold {
+  font-family: "Gotham-bold", sans-serif;
 }

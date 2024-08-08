@@ -20,27 +20,24 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const response: AxiosResponse<any> = await axios.post(
-        "https://127.0.0.1:8000/api/login_check",
+        "http://127.0.0.1:8000/api/login_check",
         {
           email,
           password,
         }
       );
-
       if (response.data.token) {
         localStorage.setItem("authToken", response.data.token);
         setAuthToken(response.data.token);
         navigate("/dashboard");
-        console.log("Connexion reussi, Token:", response.data.token);
       } else {
         setErreur(true);
-        console.log(response.data);
         setMessageErreur("Votre email ou mot de passe est invalide");
       }
     } catch (error) {
       setErreur(true);
       setMessageErreur("Votre email ou mot de passe est invalide");
-      console.log(`Error :  ${error}`);
+      console.error(`error ${error}`);
     }
   };
 

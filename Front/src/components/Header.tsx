@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaUser, FaHeart, FaCartShopping } from "react-icons/fa6";
-import { Menu } from "lucide-react";
+import { Menu, ListX } from "lucide-react";
 import logo from "../assets/picture/logo.png";
 import cuisine from "../assets/picture/cuisine1.png";
 import douche from "../assets/picture/salle-de-bain.jpg";
@@ -24,14 +24,16 @@ const Header: React.FC = () => {
     <>
       <header className="flex items-center h-30 justify-between p-4 bg-custom-bg text-white">
         <div className="flex items-center ml-10 max-lg:ml-0">
-          <img
-            src={logo}
-            alt="Logo"
-            className="h-12 w-12 max-lg:h-10 max-lg:w-10"
-          />
-          <h1 className="text-2xl font-extrabold -ml-2 mt-3 pt-1 max-lg:text-sm">
-            Archideco
-          </h1>
+          <a href="./" className="relative inline-block">
+            <img
+              src={logo}
+              alt="Logo"
+              className="h-12 w-12 max-lg:h-10 max-lg:w-10"
+            />
+            <h1 className="absolute inset-0 flex items-center justify-center text-2xl font-extrabold text-white max-lg:text-sm transform  translate-x-16 translate-y-2">
+              Archideco
+            </h1>
+          </a>
         </div>
 
         <nav className="flex-grow flex justify-center space-x-8 font-medium max-lg:hidden">
@@ -67,12 +69,12 @@ const Header: React.FC = () => {
             className="hidden max-lg:block hover:cursor-pointer"
             onClick={openMobileMenu}
           >
-            <Menu size={26} />
+            {open ? <ListX size={26} /> : <Menu size={26} />}
           </p>
         </div>
       </header>
       {/* Mobile */}
-      <section className="w-screen h-auto min-h-10 px-1">
+      <section className="h-auto px-1">
         <div
           className={`w-full h-auto flex-col items-start pt-2 justify-between gap-2 transition-max-height duration-500 ease-in-out ${
             open ? "flex" : "hidden -translate-y-20"
@@ -104,7 +106,7 @@ const Header: React.FC = () => {
           isProductsVisible ? "max-h-auto" : "max-h-0"
         }`}
       >
-        <div className=" text-black p-4 shadow-2xl ">
+        <div className=" text-black p-4 shadow-2xl pt-14">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <div className="flex flex-col items-center">
               <h2 className="text-l font-bold mb-3 text-white">Nos cuisines</h2>

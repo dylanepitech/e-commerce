@@ -11,11 +11,14 @@
     "check": "find . -type f -name '*.tsx' | while read file; do line_count=$(wc -l < \"$file\"); if [ \"$line_count\" -gt 200 ]; then echo \"$file has $line_count lines, which exceeds the 200 line limit.\"; exit 1; fi; done"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0",
     "axios": "^1.7.2",
     "cors": "^2.8.5",
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.408.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.2.1",
     "react-router-dom": "^6.25.1"
   },
   "devDependencies": {

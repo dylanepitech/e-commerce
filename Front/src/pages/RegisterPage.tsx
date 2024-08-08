@@ -52,10 +52,10 @@ const RegisterPage = () => {
         if (response.data.status == 200) {
           navigate("/login");
         } else {
-          // location.reload();
+          location.reload();
         }
       } catch (error) {
-        // location.reload();
+        location.reload();
       }
     }
   };

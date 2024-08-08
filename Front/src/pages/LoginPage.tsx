@@ -24,6 +24,11 @@ const LoginPage = () => {
         {
           email,
           password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
       if (response.data.token) {
@@ -49,7 +54,7 @@ const LoginPage = () => {
           <p className="text-center text-red-500/50 text-sm">{messageErreur}</p>
         )}
         <div className="mt-10 mb-10 sm:mx-auto sm:w-full sm:max-w-sm bg-white p-10 rounded-lg max-md:p-5 relative">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-white bg-[#639D87] rounded-t-lg absolute left-0 top-0 w-full py-2">
               Connexion
             </h2>
@@ -128,7 +133,11 @@ const LoginPage = () => {
           </p>
         </div>
         <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white rounded-lg max-lg:hidden border-2">
-          <img src={famille} alt="famille" className="w-full h-auto rounded-lg" />
+          <img
+            src={famille}
+            alt="famille"
+            className="w-full h-auto rounded-lg"
+          />
         </div>
       </main>
       <Footer />

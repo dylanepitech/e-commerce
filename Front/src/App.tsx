@@ -33,7 +33,7 @@ const AppRoutes: React.FC = () => {
       </Route>
 
       {/* Route Administrateur */}
-      <Route element={<ProtectedAdminRoute />}>{/* ICI */}</Route>
+      <Route element={<ProtectedAdminRoute />}>ICI</Route>
     </Routes>
   );
 };

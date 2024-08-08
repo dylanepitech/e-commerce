@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaUser, FaHeart, FaCartShopping } from "react-icons/fa6";
+import {Link} from "react-router-dom";
 import { Menu, ListX } from "lucide-react";
 import logo from "../assets/picture/logo.png";
 import cuisine from "../assets/picture/cuisine1.png";
@@ -23,7 +24,7 @@ const Header: React.FC = () => {
   return (
     <>
       <header className="flex items-center h-30 justify-between p-4 bg-custom-bg text-white">
-        <div className="flex items-center ml-10 max-lg:ml-0">
+        <a href="/" className="flex items-center ml-10 max-lg:ml-0">
           <img
             src={logo}
             alt="Logo"
@@ -32,7 +33,7 @@ const Header: React.FC = () => {
           <h1 className="text-2xl font-extrabold -ml-2 mt-3 pt-1 max-lg:text-sm">
             Archideco
           </h1>
-        </div>
+        </a>
 
         <nav className="flex-grow flex justify-center space-x-8 font-medium max-lg:hidden">
           <a
@@ -98,7 +99,7 @@ const Header: React.FC = () => {
       </section>
       {/* Mobile */}
       <div
-        className={`overflow-scroll ${
+        className={`overflow-scroll scrollbar-none ${
           open ? "translate-y-3" : "-translate-y-10"
         } transition-max-height duration-500 ease-in-out ${
           isProductsVisible ? "max-h-auto" : "max-h-0"
@@ -106,16 +107,16 @@ const Header: React.FC = () => {
       >
         <div className=" text-black p-4 shadow-2xl ">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            <div className="flex flex-col items-center">
+            <Link to="/category/cuisines"  className="flex flex-col items-center">
               <h2 className="text-l font-bold mb-3 text-white">Nos cuisines</h2>
               <img
                 src={cuisine}
                 alt="Nos cuisines"
                 className="w-full h-32 object-cover rounded-md border-white transition-transform duration-300 transform hover:scale-95 hover:border-opacity-60"
               />
-            </div>
+            </Link>
 
-            <div className="flex flex-col items-center">
+            <Link to="/category/salle-de-bain" className="flex flex-col items-center">
               <h2 className="text-l font-bold mb-3 text-white">
                 Nos salles de bain
               </h2>
@@ -124,18 +125,18 @@ const Header: React.FC = () => {
                 alt="Nos salles de bain"
                 className="w-full h-32 object-cover rounded-md border-white transition-transform duration-300 transform hover:scale-95"
               />
-            </div>
+            </Link>
 
-            <div className="flex flex-col items-center">
+            <Link to="/category/salons" className="flex flex-col items-center">
               <h2 className="text-l font-bold mb-3 text-white">Nos salons</h2>
               <img
                 src={salon}
                 alt="Nos salons"
                 className="w-full h-32 object-cover rounded-md border-white transition-transform duration-300 transform hover:scale-95"
               />
-            </div>
+            </Link>
 
-            <div className="flex flex-col items-center">
+            <Link to="/category/gros-electromenagers" className="flex flex-col items-center">
               <h2 className="text-l font-bold mb-3 text-white">
                 Nos gros électroménagers
               </h2>
@@ -144,9 +145,9 @@ const Header: React.FC = () => {
                 alt="Nos gros électroménagers"
                 className="w-full h-32 object-cover rounded-md border-white transition-transform duration-300 transform hover:scale-95"
               />
-            </div>
+            </Link>
 
-            <div className="flex flex-col items-center">
+            <Link to="/category/petit-electromenagers" className="flex flex-col items-center">
               <h2 className="text-l font-bold mb-3 text-white">
                 Nos petits électroménagers
               </h2>
@@ -155,7 +156,7 @@ const Header: React.FC = () => {
                 alt="Nos petits électroménagers"
                 className="w-full h-32 object-cover rounded-md border-white transition-transform duration-300 transform hover:scale-95"
               />
-            </div>
+            </Link>
           </div>
         </div>
       </div>

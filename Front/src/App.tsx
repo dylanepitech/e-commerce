@@ -4,11 +4,20 @@ import { AuthContext, AuthProvider } from "./hooks/AuthContext";
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import ProtectedRoute from "./hooks/ProtectedAdminRoute";
+import ProtectedRoute from "./hooks/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
 import ProtectedAdminRoute from "./hooks/ProtectedAdminRoute";
 import CategoryPage from "./pages/CategoryPage";
+import { ChakraProvider } from '@chakra-ui/react'
 import ProductPage from "./pages/ProductPage";
+import TestReq from "./test/testReq";
+import TestUserComplements from "./test/testUserComplements";
+import TestCarts from "./test/testCart";
+import TestOrders from "./test/testOrders";
+import TestReductions from "./test/testReduction";
+import TestWishlists from "./test/testWishlist";
+import RestrictedRoute from "./hooks/RestrictedRoute";
 
 const AppRoutes: React.FC = () => {
   const { isLoading } = useContext(AuthContext);
@@ -18,23 +27,40 @@ const AppRoutes: React.FC = () => {
   }
 
   return (
-    <Routes>
-      {/* Toutes les routes non connecter  */}
-      <Route path="/" element={<HomePage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/category" element={<CategoryPage />} />
-      <Route path="/product" element={<ProductPage />} />
+    <ChakraProvider>
 
-      {/* Routes User connecter */}
-      <Route element={<ProtectedRoute />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        {/* ici */}
-      </Route>
+      <Routes>
+        {/* Toutes les routes non connecter  */}
+        <Route element={<RestrictedRoute />}>
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
 
-      {/* Route Administrateur */}
-      <Route element={<ProtectedAdminRoute />}>{/* ICI */}</Route>
-    </Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/category/:category" element={<CategoryPage />} />
+        <Route path="/category" element={<CategoryPage />} />
+        <Route path="/product" element={<ProductPage />} />
+
+        {/* Routes User connecter */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/testuser" element={<TestReq />} />
+          <Route path="/testusercomplement" element={<TestUserComplements />} />
+          <Route path="/testcart" element={<TestCarts />} />
+          <Route path="/testorder" element={<TestOrders />} />
+          <Route path="/testwishlist" element={<TestWishlists />} />
+          {/* ici */}
+        </Route>
+
+        {/* Route Administrateur */}
+        <Route element={<ProtectedAdminRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/testreduction" element={<TestReductions />} />
+          <Route path="/profile/:id" element={<Profile />} />
+
+        </Route>
+      </Routes>
+    </ChakraProvider>
   );
 };
 

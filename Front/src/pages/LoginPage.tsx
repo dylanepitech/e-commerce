@@ -36,7 +36,8 @@ const LoginPage = () => {
     setErreur(false);
     e.preventDefault();
  
-    try {
+    if (isValid) 
+      try {
       const response = await login(email, password);
       if (response.token) {
         localStorage.setItem("authToken", response.token);
@@ -68,7 +69,6 @@ const LoginPage = () => {
         duration: 4000,
         isClosable: true,
       });
-
     }
   };
 

@@ -1,9 +1,10 @@
 import { ChangeEvent, useContext, useState } from "react";
 import Footer from "../components/Footer";
-import axios, { AxiosResponse } from "axios";
+import { useToast } from '@chakra-ui/react'
 import Header from "../components/Header";
 import famille from "../assets/picture/famille.jpg";
 import { AuthContext } from "../hooks/AuthContext";
+import { login } from "../Requests/AuthRequest";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
@@ -13,6 +14,7 @@ const LoginPage = () => {
   const [messageErreur, setMessageErreur] = useState<string>("");
   const { setAuthToken } = useContext(AuthContext);
   const navigate = useNavigate();
+  const toast = useToast()
 
   let isValid: boolean = true;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -33,29 +35,40 @@ const LoginPage = () => {
     setMessageErreur("");
     setErreur(false);
     e.preventDefault();
+ 
+    try {
+      const response = await login(email, password);
+      if (response.token) {
+        localStorage.setItem("authToken", response.token);
+        setAuthToken(response.token);
+        navigate("/profile");
 
-    if (isValid) {
-      try {
-        const response: AxiosResponse<any> = await axios.post(
-          "http://127.0.0.1:8000/api/login_check",
-          {
-            email,
-            password,
-          }
-        );
-        if (response.data.token) {
-          localStorage.setItem("authToken", response.data.token);
-          setAuthToken(response.data.token);
-          navigate("/dashboard");
-        } else {
-          setErreur(true);
-          setMessageErreur("Votre email ou mot de passe est invalide");
-        }
-      } catch (error) {
-        setErreur(true);
-        setMessageErreur("Votre email ou mot de passe est invalide");
-        console.error(`error ${error}`);
+        toast({
+          title: "Connexion réussie",
+          description: '',
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: "Identifiants invalid",
+          description: '',
+          status: 'error',
+          duration: 4000,
+          isClosable: true,
+        });
       }
+
+    } catch (error) {
+      toast({
+        title: "Identifiants invalid",
+        description: '',
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      });
+
     }
   };
 

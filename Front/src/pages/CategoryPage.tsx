@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Header from "../components/Header";
 import FilterButton from "../components/FilterButton";
 import ProductGrid from "../components/ProductGrid";
 import Pagination from "../components/Pagination";
 import Footer from "../components/Footer";
+import { useParams } from 'react-router-dom';
+import { AuthContext } from "../hooks/AuthContext"; 
 import "../index.css";
 import cuisine from "../assets/picture/cuisine1.png";
 import image1 from "../assets/picture/image1.png";
@@ -16,22 +18,54 @@ interface Product {
   image: string;
   title: string;
   price: number;
+  size: string;
 }
 
 const CategoryPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [priceRange, setPriceRange] = useState<{
+    min: number;
+    max: number;
+    current: number;
+  }>({ min: 0, max: 0, current: 0 });
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
+  const [availableSizes, setAvailableSizes] = useState<string[]>([]);
   const productsPerPage = 6;
+  const { category } = useParams();
+  const { authToken } = useContext(AuthContext);
+  const formattedCategory = category ? category.replace(/-/g, ' ').toUpperCase() : "";
+
+  useEffect(() => {
+    if(authToken){
+
+      console.log("Token:", authToken);
+    }
+    
+  }, [authToken]);
+
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("./data/products.json");
+        const response = await fetch("../data/products.json");
         if (!response.ok) {
           throw new Error();
         }
         const data = await response.json();
         setProducts(data.products);
+        setFilteredProducts(data.products);
+
+        const prices = data.products.map((p: Product) => p.price);
+        const minPrice = Math.min(...prices);
+        const maxPrice = Math.max(...prices);
+        setPriceRange({ min: minPrice, max: maxPrice, current: minPrice });
+
+        const sizes = [
+          ...new Set(data.products.map((p: Product) => p.size)),
+        ] as string[];
+        setAvailableSizes(sizes);
       } catch (error) {
         console.error("erreur", error);
       }
@@ -40,16 +74,42 @@ const CategoryPage = () => {
     fetchProducts();
   }, []);
 
-  const totalPages = Math.ceil(products.length / productsPerPage);
+  useEffect(() => {
+    let result = products;
+
+    result = result.filter(
+      (product) =>
+        product.price >= priceRange.current && product.price <= priceRange.max
+    );
+
+    if (selectedSizes.length > 0) {
+      result = result.filter((product) => selectedSizes.includes(product.size));
+    }
+
+    setFilteredProducts(result);
+    setCurrentPage(1);
+  }, [products, priceRange.current, selectedSizes]);
+
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
-  const currentProducts = products.slice(
+  const currentProducts = filteredProducts.slice(
     (currentPage - 1) * productsPerPage,
     currentPage * productsPerPage
   );
+
+  const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPriceRange((prev) => ({ ...prev, current: Number(event.target.value) }));
+  };
+
+  const handleSizeChange = (size: string) => {
+    setSelectedSizes((prev) =>
+      prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
+    );
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -58,20 +118,21 @@ const CategoryPage = () => {
         <div className="flex justify-center p-5">
           <div className="flex w-full max-w-6xl justify-center">
             <div className="w-[1000px] h-[400px] p-5 bg-white border border-white shadow-lg rounded-lg mr-8">
+
               <h2 className="mb-4 text-3xl font-bold gotham-bold-font mt-3">
-                NOS CUISINES
+                NOS {formattedCategory}
               </h2>
               <br />
-              <p className="text-xl gotham-font">
+              <p className="text-xl gotham-medium_1">
                 Découvrez ci-dessous nos cuisines modernes et fonctionnelles,
                 alliant élégance et praticité. Chaque modèle est conçu avec des
                 matériaux de haute qualité pour s'intégrer parfaitement à votre
                 espace. Trouvez la cuisine idéale et prenez rendez-vous dans
-                l’un de nos trois magasins{" "}
+                l'un de nos trois magasins{" "}
                 <span className="text-green-light">MOBALPA</span> à Marseille.
               </p>
               <br />
-              <button className="bg-green-light hover:bg-custom-bg text-white text-lg py-2 px-4 mt-4 font-semibold">
+              <button className="bg-green-light hover:bg-custom-bg text-white text-lg py-2 px-4 mt-1 font-semibold">
                 Nos magasins MOBALPA
               </button>
             </div>
@@ -90,16 +151,36 @@ const CategoryPage = () => {
       </div>
       <div className="flex flex-col items-center p-5 bg-white w-full mt-2">
         <div className="flex space-x-12">
-          {[
-            "Trier",
-            "Taille",
-            "Couleur",
-            "Matériaux",
-            "Promo",
-            "Plus de filtres",
-          ].map((label) => (
-            <FilterButton key={label} label={label} />
-          ))}
+          <FilterButton label="Prix">
+            <div className="px-4 py-2">
+              <input
+                type="range"
+                min={priceRange.min}
+                max={priceRange.max}
+                value={priceRange.current}
+                onChange={handlePriceChange}
+                className="w-full"
+              />
+              <p>
+                Prix: {priceRange.current}€ - {priceRange.max}€
+              </p>
+            </div>
+          </FilterButton>
+          <FilterButton label="Taille">
+            <div className="px-4 py-2">
+              {availableSizes.map((size) => (
+                <label key={size} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={selectedSizes.includes(size)}
+                    onChange={() => handleSizeChange(size)}
+                    className="mr-2"
+                  />
+                  {size}
+                </label>
+              ))}
+            </div>
+          </FilterButton>
         </div>
         <br></br>
         <br></br>
@@ -120,7 +201,7 @@ const CategoryPage = () => {
       <br></br>
       <br></br>
 
-      <div className="bg-green-horizontal py-4 flex flex-col items-center">
+      <div className="bg-green-horizontal-revers py-4 flex flex-col items-center">
         <div className="flex justify-center items-center space-x-8">
           <div className="flex flex-col items-center">
             <div className="w-44 h-44 border-2 border-white rounded-full flex items-center justify-center mt-6">
@@ -132,7 +213,9 @@ const CategoryPage = () => {
                 />
               </div>
             </div>
-            <p className="text-center text-white mt-2">Choisissez votre cuisine</p>
+            <p className="text-center text-white mt-4 gotham-medium_1">
+              Choisissez votre cuisine
+            </p>
           </div>
           <div className="w-24 h-12 flex items-center justify-center">
             <svg
@@ -140,10 +223,15 @@ const CategoryPage = () => {
               viewBox="0 0 100 24"
               className="w-full h-full"
             >
-              <path d="M0 12h80M80 12l-5-5m5 5l-5 5" stroke="white" strokeWidth="2" fill="none" />
+              <path
+                d="M0 12h80M80 12l-5-5m5 5l-5 5"
+                stroke="white"
+                strokeWidth="1"
+                fill="none"
+              />
             </svg>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center mt-6">
             <div className="w-44 h-44 border-2 border-white rounded-full flex items-center justify-center mt-6">
               <div className="w-28 h-28 overflow-hidden relative">
                 <img
@@ -153,7 +241,10 @@ const CategoryPage = () => {
                 />
               </div>
             </div>
-            <p className="text-center text-white mt-2">Configurez-la comme bon<br/> vous semble</p>
+            <p className="text-center text-white mt-4 gotham-medium_1">
+              Configurez-la comme
+              <br /> bon vous semble
+            </p>
           </div>
           <div className="w-24 h-12 flex items-center justify-center">
             <svg
@@ -161,10 +252,15 @@ const CategoryPage = () => {
               viewBox="0 0 100 24"
               className="w-full h-full"
             >
-              <path d="M0 12h80M80 12l-5-5m5 5l-5 5" stroke="white" strokeWidth="2" fill="none" />
+              <path
+                d="M0 12h80M80 12l-5-5m5 5l-5 5"
+                stroke="white"
+                strokeWidth="1"
+                fill="none"
+              />
             </svg>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center mt-11">
             <div className="w-44 h-44 border-2 border-white rounded-full flex items-center justify-center mt-6">
               <div className="w-28 h-28 overflow-hidden">
                 <img
@@ -174,8 +270,10 @@ const CategoryPage = () => {
                 />
               </div>
             </div>
-            <p className="text-center text-white mt-2">
-              Prenez rendez-vous<br/> dans l'un de nos trois magasins<br/> MOBALPA
+            <p className="text-center text-white mt-4 gotham-medium_1">
+              Prenez rendez-vous dans
+              <br /> l'un de nos trois magasins
+              <br /> MOBALPA
             </p>
           </div>
           <div className="w-24 h-12 flex items-center justify-center">
@@ -184,10 +282,15 @@ const CategoryPage = () => {
               viewBox="0 0 100 24"
               className="w-full h-full"
             >
-              <path d="M0 12h80M80 12l-5-5m5 5l-5 5" stroke="white" strokeWidth="2" fill="none" />
+              <path
+                d="M0 12h80M80 12l-5-5m5 5l-5 5"
+                stroke="white"
+                strokeWidth="1"
+                fill="none"
+              />
             </svg>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center mt-6">
             <div className="w-44 h-44 border-2 border-white rounded-full flex items-center justify-center mt-6">
               <div className="w-34 h-34 overflow-hidden">
                 <img
@@ -197,13 +300,13 @@ const CategoryPage = () => {
                 />
               </div>
             </div>
-            <p className="text-center text-white mt-2">Visitez votre future<br/> cuisine en magasin</p>
+            <p className="text-center text-white mt-4 gotham-medium_1">
+              Visitez votre future
+              <br /> cuisine en magasin
+            </p>
           </div>
         </div>
       </div>
-
-      <br></br>
-      <br></br>
       <Footer />
     </div>
   );

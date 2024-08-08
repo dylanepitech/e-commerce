@@ -1,52 +1,36 @@
+import React, { useState } from 'react';
+
 interface FilterButtonProps {
   label: string;
+  children: React.ReactNode;
 }
 
-const FilterButton = ({ label }: FilterButtonProps) => {
+const FilterButton: React.FC<FilterButtonProps> = ({ label, children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="relative inline-block w-full">
-      <select
-        key={label}
-        className="appearance-none flex justify-center outline-none items-center bg-green-light text-white font-semibold h-[40px] w-[150px] rounded px-4 cursor-pointer"
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="px-4 py-2 rounded-full border bg-green-light text-white flex items-center"
       >
-        <option value={label}>{label}</option>
-        <option value="option1">{label} Option 1</option>
-        <option value="option2">{label} Option 2</option>
-        <option value="option3">{label} Option 3</option>
-      </select>
-      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
-        {label === 'Plus de filtres' ? (
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        ) : (
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        )}
-      </div>
+        {label}
+        <svg
+          className={`ml-2 h-5 w-5 transform ${isOpen ? 'rotate-180' : ''}`}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      </button>
+      {isOpen && (
+        <div className="absolute z-10 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+          <div className="py-1">
+            {children}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

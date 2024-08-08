@@ -14,30 +14,48 @@ const LoginPage = () => {
   const { setAuthToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  let isValid: boolean = true;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (!emailRegex.test(email)) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
+  if (password.length < 6) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setMessageErreur("");
     setErreur(false);
     e.preventDefault();
-    try {
-      const response: AxiosResponse<any> = await axios.post(
-        "http://127.0.0.1:8000/api/login_check",
-        {
-          email,
-          password,
+
+    if (isValid) {
+      try {
+        const response: AxiosResponse<any> = await axios.post(
+          "http://127.0.0.1:8000/api/login_check",
+          {
+            email,
+            password,
+          }
+        );
+        if (response.data.token) {
+          localStorage.setItem("authToken", response.data.token);
+          setAuthToken(response.data.token);
+          navigate("/dashboard");
+        } else {
+          setErreur(true);
+          setMessageErreur("Votre email ou mot de passe est invalide");
         }
-      );
-      if (response.data.token) {
-        localStorage.setItem("authToken", response.data.token);
-        setAuthToken(response.data.token);
-        navigate("/dashboard");
-      } else {
+      } catch (error) {
         setErreur(true);
         setMessageErreur("Votre email ou mot de passe est invalide");
+        console.error(`error ${error}`);
       }
-    } catch (error) {
-      setErreur(true);
-      setMessageErreur("Votre email ou mot de passe est invalide");
-      console.error(`error ${error}`);
     }
   };
 
@@ -49,7 +67,7 @@ const LoginPage = () => {
           <p className="text-center text-red-500/50 text-sm">{messageErreur}</p>
         )}
         <div className="mt-10 mb-10 sm:mx-auto sm:w-full sm:max-w-sm bg-white p-10 rounded-lg max-md:p-5 relative">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-white bg-[#639D87] rounded-t-lg absolute left-0 top-0 w-full py-2">
               Connexion
             </h2>

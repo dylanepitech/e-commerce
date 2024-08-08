@@ -72,11 +72,12 @@ const CategoryPage = () => {
         <div className="flex justify-center p-5">
           <div className="flex w-full max-w-6xl justify-center">
             <div className="w-[1000px] h-[400px] p-5 bg-white border border-white shadow-lg rounded-lg mr-8">
+
               <h2 className="mb-4 text-3xl font-bold gotham-bold-font mt-3">
                 NOS {formattedCategory}
               </h2>
               <br />
-              <p className="text-xl gotham-font">
+              <p className="text-xl gotham-medium_1">
                 Découvrez ci-dessous nos cuisines modernes et fonctionnelles,
                 alliant élégance et praticité. Chaque modèle est conçu avec des
                 matériaux de haute qualité pour s'intégrer parfaitement à votre
@@ -85,7 +86,7 @@ const CategoryPage = () => {
                 <span className="text-green-light">MOBALPA</span> à Marseille.
               </p>
               <br />
-              <button className="bg-green-light hover:bg-custom-bg text-white text-lg py-2 px-4 mt-4 font-semibold">
+              <button className="bg-green-light hover:bg-custom-bg text-white text-lg py-2 px-4 mt-1 font-semibold">
                 Nos magasins MOBALPA
               </button>
             </div>
@@ -134,7 +135,7 @@ const CategoryPage = () => {
       <br></br>
       <br></br>
 
-      <div className="bg-green-horizontal py-4 flex flex-col items-center">
+      <div className="bg-green-horizontal-revers py-4 flex flex-col items-center">
         <div className="flex justify-center items-center space-x-8">
           <div className="flex flex-col items-center">
             <div className="w-44 h-44 border-2 border-white rounded-full flex items-center justify-center mt-6">
@@ -146,7 +147,7 @@ const CategoryPage = () => {
                 />
               </div>
             </div>
-            <p className="text-center text-white mt-2">Choisissez votre cuisine</p>
+            <p className="text-center text-white mt-4 gotham-medium_1">Choisissez votre cuisine</p>
           </div>
           <div className="w-24 h-12 flex items-center justify-center">
             <svg
@@ -154,10 +155,10 @@ const CategoryPage = () => {
               viewBox="0 0 100 24"
               className="w-full h-full"
             >
-              <path d="M0 12h80M80 12l-5-5m5 5l-5 5" stroke="white" strokeWidth="2" fill="none" />
+              <path d="M0 12h80M80 12l-5-5m5 5l-5 5" stroke="white" strokeWidth="1" fill="none" />
             </svg>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center mt-6">
             <div className="w-44 h-44 border-2 border-white rounded-full flex items-center justify-center mt-6">
               <div className="w-28 h-28 overflow-hidden relative">
                 <img
@@ -167,7 +168,7 @@ const CategoryPage = () => {
                 />
               </div>
             </div>
-            <p className="text-center text-white mt-2">Configurez-la comme bon<br /> vous semble</p>
+            <p className="text-center text-white mt-4 gotham-medium_1">Configurez-la comme<br/> bon vous semble</p>
           </div>
           <div className="w-24 h-12 flex items-center justify-center">
             <svg
@@ -175,10 +176,10 @@ const CategoryPage = () => {
               viewBox="0 0 100 24"
               className="w-full h-full"
             >
-              <path d="M0 12h80M80 12l-5-5m5 5l-5 5" stroke="white" strokeWidth="2" fill="none" />
+              <path d="M0 12h80M80 12l-5-5m5 5l-5 5" stroke="white" strokeWidth="1" fill="none" />
             </svg>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center mt-11">
             <div className="w-44 h-44 border-2 border-white rounded-full flex items-center justify-center mt-6">
               <div className="w-28 h-28 overflow-hidden">
                 <img
@@ -188,8 +189,8 @@ const CategoryPage = () => {
                 />
               </div>
             </div>
-            <p className="text-center text-white mt-2">
-              Prenez rendez-vous<br /> dans l'un de nos trois magasins<br /> MOBALPA
+            <p className="text-center text-white mt-4 gotham-medium_1">
+              Prenez rendez-vous dans<br/> l'un de nos trois magasins<br/> MOBALPA
             </p>
           </div>
           <div className="w-24 h-12 flex items-center justify-center">
@@ -198,10 +199,10 @@ const CategoryPage = () => {
               viewBox="0 0 100 24"
               className="w-full h-full"
             >
-              <path d="M0 12h80M80 12l-5-5m5 5l-5 5" stroke="white" strokeWidth="2" fill="none" />
+              <path d="M0 12h80M80 12l-5-5m5 5l-5 5" stroke="white" strokeWidth="1" fill="none" />
             </svg>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center mt-6">
             <div className="w-44 h-44 border-2 border-white rounded-full flex items-center justify-center mt-6">
               <div className="w-34 h-34 overflow-hidden">
                 <img
@@ -211,13 +212,10 @@ const CategoryPage = () => {
                 />
               </div>
             </div>
-            <p className="text-center text-white mt-2">Visitez votre future<br /> cuisine en magasin</p>
+            <p className="text-center text-white mt-4 gotham-medium_1">Visitez votre future<br/> cuisine en magasin</p>
           </div>
         </div>
       </div>
-
-      <br></br>
-      <br></br>
       <Footer />
     </div>
   );

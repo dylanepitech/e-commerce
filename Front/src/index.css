@@ -1,5 +1,6 @@
 /* src/index.css */
 @import "./fonts.css";
+@import '@fortawesome/fontawesome-free/css/all.min.css';
 
 @tailwind base;
 @tailwind components;
@@ -73,14 +74,50 @@
   color: #639d87;
 }
 
-.aquawax-font {
-  font-family: "Aquawax", sans-serif;
-}
-
-.gotham-font {
-  font-family: "Gotham", sans-serif;
-}
-
-.gotham-font-bold {
+.gotham-bold {
   font-family: "Gotham-bold", sans-serif;
+}
+
+.gotham-bold-italic {
+  font-family: "Gotham-bold-italic", sans-serif;
+}
+
+.gotham-book {
+  font-family: "Gotham-book", sans-serif;
+}
+
+.gotham-book-italic {
+  font-family: "Gotham-book-italic", sans-serif;
+}
+
+.gotham-light {
+  font-family: "Gotham-light", sans-serif;
+}
+
+.gotham-light-italic {
+  font-family: "Gotham-light-italic", sans-serif;
+}
+
+.gotham-medium_1 {
+  font-family: "Gotham-medium_1", sans-serif;
+}
+
+.gotham-medium {
+  font-family: "Gotham-medium", sans-serif;
+}
+
+.gotham-medium-italic {
+  font-family: "Gotham-medium-italic", sans-serif;
+}
+
+.aquawax-black {
+  font-family: "Aquawax-black", sans-serif;
+}
+
+.aquawax-light {
+  font-family: "Aquawax-light", sans-serif;
+}
+
+.aquawax-medium {
+  font-family: "Aquawax-medium", sans-serif;
 }

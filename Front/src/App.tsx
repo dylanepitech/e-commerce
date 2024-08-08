@@ -11,6 +11,11 @@ import ProtectedAdminRoute from "./hooks/ProtectedAdminRoute";
 import CategoryPage from "./pages/CategoryPage";
 import { ChakraProvider } from '@chakra-ui/react'
 import ProductPage from "./pages/ProductPage";
+
+import ResetPwdPage from "./pages/ResetPwdPage";
+import ResetPwdBisPage from "./pages/ResetPwdBisPage";
+import CGVCGUPage from "./pages/CGVCGUPage";
+
 import TestReq from "./test/testReq";
 import TestUserComplements from "./test/testUserComplements";
 import TestCarts from "./test/testCart";
@@ -18,6 +23,7 @@ import TestOrders from "./test/testOrders";
 import TestReductions from "./test/testReduction";
 import TestWishlists from "./test/testWishlist";
 import RestrictedRoute from "./hooks/RestrictedRoute";
+
 
 const AppRoutes: React.FC = () => {
   const { isLoading } = useContext(AuthContext);
@@ -40,6 +46,9 @@ const AppRoutes: React.FC = () => {
         <Route path="/category/:category" element={<CategoryPage />} />
         <Route path="/category" element={<CategoryPage />} />
         <Route path="/product" element={<ProductPage />} />
+        <Route path="/cgvcgu" element={<CGVCGUPage />} />
+        <Route path="/resetpwd" element={<ResetPwdPage />} />
+        <Route path="/resetpwdbis" element={<ResetPwdBisPage />} />
 
         {/* Routes User connecter */}
         <Route element={<ProtectedRoute />}>

@@ -1,3 +1,8 @@
+import archideco from "../assets/picture/archideco.png";
+import mobalpa from "../assets/picture/mobalpa.png";
+
+
+
 const Footer = () => {
   return (
     <footer className="w-full">
@@ -5,17 +10,17 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 gap-y-8 md:gap-8 py-10 max-w-sm mx-auto sm:max-w-3xl lg:max-w-full">
           <div className="col-span-full mb-10 lg:col-span-2 lg:mb-0">
-            <a href="#" className="flex justify-center lg:justify-start">
-              ArchiDeco
+            <a href="/" className="flex justify-center">
+              <img src={archideco} alt="ArchiDeco" className="w-auto object-cover object-center" />
             </a>
-            <p className="py-8 text-sm text-gray-500 lg:max-w-xs text-center lg:text-left">
-              Partenaire officiel de Mobalpa.
+            <p className="py-8 text-lg text-[#639D87] lg:max-w-xs text-center">
+              By
             </p>
             <a
               href="#"
-              className="py-2.5 px-5 h-9 block w-fit bg-[#639D87] rounded-full shadow-sm text-xs text-white mx-auto transition-all  duration-500 hover:bg-[#1E4347] lg:mx-0"
+              className="flex justify-center"
             >
-              Contactez-nous !
+              <img src={mobalpa} alt="Mobalpa" className="w-auto object-cover object-center" />
             </a>
           </div>
           <div className="lg:mx-auto text-left ">
@@ -44,17 +49,17 @@ const Footer = () => {
             <h4 className="text-lg text-gray-900 font-medium mb-7">Produits</h4>
             <ul className="text-sm  transition-all duration-500">
               <li className="mb-6">
-                <a href="#" className="text-gray-600 hover:text-gray-900">
+                <a href="/category/cuisines" className="text-gray-600 hover:text-gray-900">
                   Nos Cuisines
                 </a>
               </li>
               <li className="mb-6">
-                <a href="#" className=" text-gray-600 hover:text-gray-900">
+                <a href="/category/gros-electromenager" className=" text-gray-600 hover:text-gray-900">
                   Gros électroménager
                 </a>
               </li>
               <li>
-                <a href="#" className=" text-gray-600 hover:text-gray-900">
+                <a href="/category/petit-electromenager" className=" text-gray-600 hover:text-gray-900">
                   Petit électroménager
                 </a>
               </li>
@@ -104,9 +109,9 @@ const Footer = () => {
                 <path
                   d="M1.25 6L13.25 6M9.5 10.5L13.4697 6.53033C13.7197 6.28033 13.8447 6.15533 13.8447 6C13.8447 5.84467 13.7197 5.71967 13.4697 5.46967L9.5 1.5"
                   stroke="white"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </a>
@@ -115,7 +120,7 @@ const Footer = () => {
         <div className="py-7 border-t border-gray-200">
           <div className="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
             <span className="text-sm text-gray-500 ">
-              ©<a href="#">ArchiDeco</a> 2024, tous droits réservés.
+              ©<a href="/">ArchiDeco</a> 2024, tous droits réservés.
             </span>
             <div className="flex mt-4 space-x-4 sm:justify-center lg:mt-0 ">
               <a
@@ -186,8 +191,8 @@ const Footer = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M13.9191 1.10651C14.558 1.27906 15.0602 1.78251 15.2299 2.42069C15.5388 3.57887 15.5388 5.99687 15.5388 5.99687C15.5388 5.99687 15.5388 8.41487 15.2299 9.57306C15.0578 10.2136 14.5556 10.7171 13.9191 10.8872C12.7638 11.1969 8.12875 11.1969 8.12875 11.1969C8.12875 11.1969 3.49603 11.1969 2.33844 10.8872C1.69952 10.7147 1.19735 10.2112 1.0276 9.57306C0.71875 8.41487 0.71875 5.99687 0.71875 5.99687C0.71875 5.99687 0.71875 3.57887 1.0276 2.42069C1.1997 1.78015 1.70188 1.27669 2.33844 1.10651C3.49603 0.796875 8.12875 0.796875 8.12875 0.796875C8.12875 0.796875 12.7638 0.796875 13.9191 1.10651ZM10.4981 5.99687L6.6481 8.22578V3.76796L10.4981 5.99687Z"
                     fill="white"
                   />

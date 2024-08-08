@@ -26,6 +26,7 @@
       "id": 1,
       "categories_id": 1,
       "image": "src/assets/picture/cuisine1.png",
+
       "title": "Sobre",
       "price": 1000,
       "size": "petit"
@@ -48,8 +49,10 @@
     },
     {
       "id": 4,
+
       "categories_id": 1,
       "image": "src/assets/picture/cuisine1.png",
+
       "title": "Charme",
       "price": 4000,
       "size": "petit"
@@ -58,12 +61,14 @@
       "id": 5,
       "categories_id": 1,
       "image": "src/assets/picture/cuisine1.png",
+
       "title": "Chill",
       "price": 5000,
       "size": "moyen"
     },
     {
       "id": 6,
+
       "categories_id": 1,
       "image": "src/assets/picture/cuisine1.png",
       "title": "Express",
@@ -82,6 +87,7 @@
       "id": 8,
       "categories_id": 1,
       "image": "src/assets/picture/cuisine1.png",
+
       "title": "Cacao",
       "price": 8000,
       "size": "moyen"
@@ -90,12 +96,14 @@
       "id": 9,
       "categories_id": 1,
       "image": "src/assets/picture/cuisine1.png",
+
       "title": "Cacao",
       "price": 9000,
       "size": "grand"
     },
     {
       "id": 10,
+
       "categories_id": 1,
       "image": "src/assets/picture/cuisine1.png",
       "title": "Cacao",

@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Header from "../components/Header";
 import FilterButton from "../components/FilterButton";
 import ProductGrid from "../components/ProductGrid";
 import Pagination from "../components/Pagination";
 import Footer from "../components/Footer";
+import { useParams } from 'react-router-dom';
+import { AuthContext } from "../hooks/AuthContext"; 
 import "../index.css";
 import cuisine from "../assets/picture/cuisine1.png";
 import image1 from "../assets/picture/image1.png";
@@ -31,11 +33,23 @@ const CategoryPage = () => {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
   const [availableSizes, setAvailableSizes] = useState<string[]>([]);
   const productsPerPage = 6;
+  const { category } = useParams();
+  const { authToken } = useContext(AuthContext);
+  const formattedCategory = category ? category.replace(/-/g, ' ').toUpperCase() : "";
+
+  useEffect(() => {
+    if(authToken){
+
+      console.log("Token:", authToken);
+    }
+    
+  }, [authToken]);
+
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("./data/products.json");
+        const response = await fetch("../data/products.json");
         if (!response.ok) {
           throw new Error();
         }
@@ -104,8 +118,9 @@ const CategoryPage = () => {
         <div className="flex justify-center p-5">
           <div className="flex w-full max-w-6xl justify-center">
             <div className="w-[1000px] h-[400px] p-5 bg-white border border-white shadow-lg rounded-lg mr-8">
-              <h2 className="mb-4 text-3xl gotham-bold-font mt-3 aquawax-medium">
-                NOS CUISINES
+
+              <h2 className="mb-4 text-3xl font-bold gotham-bold-font mt-3">
+                NOS {formattedCategory}
               </h2>
               <br />
               <p className="text-xl gotham-medium_1">

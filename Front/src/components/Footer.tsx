@@ -1,3 +1,8 @@
+import archideco from "../assets/picture/archideco.png";
+import mobalpa from "../assets/picture/mobalpa.png";
+
+
+
 const Footer = () => {
   return (
     <footer className="w-full">
@@ -5,17 +10,17 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 gap-y-8 md:gap-8 py-10 max-w-sm mx-auto sm:max-w-3xl lg:max-w-full">
           <div className="col-span-full mb-10 lg:col-span-2 lg:mb-0">
-            <a href="#" className="flex justify-center lg:justify-start">
-              ArchiDeco
+            <a href="/" className="flex justify-center">
+              <img src={archideco} alt="ArchiDeco" className="w-auto object-cover object-center" />
             </a>
-            <p className="py-8 text-sm text-gray-500 lg:max-w-xs text-center lg:text-left">
-              Partenaire officiel de Mobalpa.
+            <p className="py-8 text-lg text-[#639D87] lg:max-w-xs text-center">
+              By
             </p>
             <a
               href="#"
-              className="py-2.5 px-5 h-9 block w-fit bg-[#639D87] rounded-full shadow-sm text-xs text-white mx-auto transition-all  duration-500 hover:bg-[#1E4347] lg:mx-0"
+              className="flex justify-center"
             >
-              Contactez-nous !
+              <img src={mobalpa} alt="Mobalpa" className="w-auto object-cover object-center" />
             </a>
           </div>
           <div className="lg:mx-auto text-left ">
@@ -44,17 +49,17 @@ const Footer = () => {
             <h4 className="text-lg text-gray-900 font-medium mb-7">Produits</h4>
             <ul className="text-sm  transition-all duration-500">
               <li className="mb-6">
-                <a href="#" className="text-gray-600 hover:text-gray-900">
+                <a href="/category/cuisines" className="text-gray-600 hover:text-gray-900">
                   Nos Cuisines
                 </a>
               </li>
               <li className="mb-6">
-                <a href="#" className=" text-gray-600 hover:text-gray-900">
+                <a href="/category/gros-electromenager" className=" text-gray-600 hover:text-gray-900">
                   Gros électroménager
                 </a>
               </li>
               <li>
-                <a href="#" className=" text-gray-600 hover:text-gray-900">
+                <a href="/category/petit-electromenager" className=" text-gray-600 hover:text-gray-900">
                   Petit électroménager
                 </a>
               </li>
@@ -115,7 +120,7 @@ const Footer = () => {
         <div className="py-7 border-t border-gray-200">
           <div className="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
             <span className="text-sm text-gray-500 ">
-              ©<a href="#">ArchiDeco</a> 2024, tous droits réservés.
+              ©<a href="/">ArchiDeco</a> 2024, tous droits réservés.
             </span>
             <div className="flex mt-4 space-x-4 sm:justify-center lg:mt-0 ">
               <a

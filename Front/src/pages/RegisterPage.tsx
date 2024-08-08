@@ -3,9 +3,7 @@ import axios from "axios";
 import { ChangeEvent, useState } from "react";
 import Header from "../components/Header";
 import famille from "../assets/picture/famille.jpg";
-
 import { useNavigate } from "react-router-dom";
-
 
 const RegisterPage = () => {
   const [firstname, setFirstname] = useState<string>("");
@@ -21,8 +19,34 @@ const RegisterPage = () => {
     e.preventDefault();
 
     let isValid: boolean = true;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (firstname.length < 3) {
+      isValid = false;
+    } else {
+      isValid = true;
+    }
+
+    if (lastname.length < 2) {
+      isValid = false;
+    } else {
+      isValid = true;
+    }
+
+    if (!emailRegex.test(email)) {
+      isValid = false;
+    } else {
+      isValid = true;
+    }
 
     if (password !== passwordConfirmation) {
+      setPasswordIsValid(false);
+      isValid = false;
+    } else {
+      setPasswordIsValid(true);
+    }
+
+    if (password.length && passwordConfirmation.length < 6) {
       setPasswordIsValid(false);
       isValid = false;
     } else {
@@ -82,6 +106,7 @@ const RegisterPage = () => {
                   <input
                     id="firstname"
                     name="firstname"
+                    minLength={3}
                     value={firstname}
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setFirstname(e.target.value)
@@ -89,6 +114,11 @@ const RegisterPage = () => {
                     type="text"
                     className="block w-full py-1.5 text-black shadow-sm sm:text-sm sm:leading-6 border-b-2 border-[#639D87] outline-none"
                   />
+                  {/* {firstname.length < 3 && (
+                    <p className="text-red-500/55 text-sm mt-2">
+                      Le prénom doit contenir au moins 3 caractères
+                    </p>
+                  )} */}
                 </div>
               </div>
               <div className="sm:col-span-3">
@@ -102,6 +132,7 @@ const RegisterPage = () => {
                   <input
                     id="lastname"
                     name="lastname"
+                    minLength={2}
                     value={lastname}
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setLastname(e.target.value)
@@ -151,6 +182,8 @@ const RegisterPage = () => {
                     setPassword(e.target.value)
                   }
                   type="password"
+                  minLength={6}
+                  placeholder="Au moins 6 caractères"
                   required
                   className="block w-full py-1.5 text-black shadow-sm sm:text-sm sm:leading-6 border-b-2 border-[#1E4347] outline-none"
                 ></input>
@@ -174,6 +207,7 @@ const RegisterPage = () => {
                     setPasswordConfirmation(e.target.value)
                   }
                   type="password"
+                  minLength={6}
                   required
                   className="block w-full py-1.5 text-black shadow-sm sm:text-sm sm:leading-6 border-b-2 border-[#639D87] outline-none"
                 ></input>

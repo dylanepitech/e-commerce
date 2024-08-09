@@ -10,7 +10,7 @@
   position: relative;
   display: inline-block;
   padding-right: 20px;
-  border-right: 5px solid #639d87; /* Bordure gauche */
+  border-right: 3px solid #639d87; /* Bordure gauche */
   border-radius: 1px;
 }
 
@@ -83,4 +83,18 @@
 
 .gotham-font-bold {
   font-family: "Gotham-bold", sans-serif;
+}
+/* CSS personnalisé */
+img.responsive-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  /* Pour les petits écrans, par exemple smartphones */
+  img.responsive-image {
+    width: 50%; /* Réduit la largeur à 75% sur les petits écrans */
+    margin-left: 30px;
+  }
 }

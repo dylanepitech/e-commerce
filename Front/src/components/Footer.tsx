@@ -90,7 +90,7 @@ const Footer = () => {
               Recevez les dernières nouvelles de nous !
             </p>
             <a
-              href="/newslatter"
+              href="/newsletter"
               className="flex items-center justify-center gap-2 bg-[#639D87] rounded-full py-3 px-6 w-fit lg:mx-0  text-sm text-white font-semibold transition-all duration-500 hover:bg-[#1E4347] hover:text-white"
             >
               S'abonner

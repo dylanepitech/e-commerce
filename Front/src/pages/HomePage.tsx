@@ -19,9 +19,7 @@ import logoLivraison from "../assets/picture/logoLivraison.png";
 import logoGaranti from "../assets/picture/garanti7.png";
 import croquis4 from "../assets/picture/croquis4.jpg";
 import croquis3 from "../assets/picture/croquis3.jpg";
-import logo2 from "../assets/picture/logoArchideco.png";
 import Footer from "../components/Footer";
-
 import { FaStar } from "react-icons/fa6";
 
 const HomePage = () => {
@@ -44,18 +42,8 @@ const HomePage = () => {
               <div className="flex flex-col md:flex-row items-center justify-center md:justify-start">
                 <div className="flex items-center mb-4 md:mb-0">
                   <h3 className="text-lg md:text-2xl lg:text-3xl text-white font-bold text-center md:text-left">
-                    Bienvenue chez
+                    Bienvenue chez ARCHIDECO
                   </h3>
-                  <a href="./" className="relative inline-block mb-5 ml-2">
-                    <img
-                      src={logo}
-                      alt="Logo"
-                      className="h-12 w-12 max-lg:h-10 max-lg:w-10"
-                    />
-                    <h1 className="absolute inset-0 flex items-center justify-center text-2xl font-extrabold text-white max-lg:text-sm transform translate-x-16 translate-y-2">
-                      Archideco
-                    </h1>
-                  </a>
                 </div>
               </div>
             </div>
@@ -332,7 +320,7 @@ const HomePage = () => {
                   <img
                     src={madeFrance}
                     alt="Petite Image"
-                    className="w-full h-full object-cover"
+                    className="responsive-image"
                   />
                 </div>
               </div>
@@ -349,7 +337,7 @@ const HomePage = () => {
                   <img
                     src={logoLivraison}
                     alt="Petite Image"
-                    className="w-full h-full object-cover"
+                    className="responsive-image"
                   />
                 </div>
               </div>
@@ -366,7 +354,7 @@ const HomePage = () => {
                   <img
                     src={logoGaranti}
                     alt="Petite Image"
-                    className="w-full h-full object-cover"
+                    className="responsive-image"
                   />
                 </div>
               </div>

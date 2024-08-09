@@ -9,7 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import ProtectedAdminRoute from "./hooks/ProtectedAdminRoute";
 import CategoryPage from "./pages/CategoryPage";
 import ProductPage from "./pages/ProductPage";
-import NewslatterPage from "./pages/NewslatterPage"; // Import correct
+import NewsletterPage from "./pages/NewsletterPage"; // Import correct
 
 const AppRoutes: React.FC = () => {
   const { isLoading } = useContext(AuthContext);
@@ -26,7 +26,7 @@ const AppRoutes: React.FC = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/category" element={<CategoryPage />} />
       <Route path="/product" element={<ProductPage />} />
-      <Route path="/newslatter" element={<NewslatterPage />} />
+      <Route path="/newsletter" element={<NewsletterPage />} />
       {/* Utilisation du composant NewslatterPage */}
       {/* Routes User connecté */}
       <Route element={<ProtectedRoute />}>

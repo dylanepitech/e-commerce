@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const NewslatterPage: React.FC = () => {
+const NewsletterPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-green-vertical">
       <Header />
@@ -52,4 +52,4 @@ const NewslatterPage: React.FC = () => {
   );
 };
 
-export default NewslatterPage;
+export default NewsletterPage;

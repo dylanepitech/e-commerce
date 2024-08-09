@@ -30,7 +30,7 @@ const Header: React.FC = () => {
               alt="Logo"
               className="h-12 w-12 max-lg:h-10 max-lg:w-10"
             />
-            <h1 className="absolute inset-0 flex items-center justify-center text-2xl font-extrabold text-white max-lg:text-sm transform  translate-x-16 translate-y-2">
+            <h1 className="absolute inset-0 flex items-center justify-center text-2xl font-extrabold text-white transform translate-x-16 translate-y-2 max-lg:translate-x-6 max-lg:translate-y-1 max-lg:text-xl">
               Archideco
             </h1>
           </a>

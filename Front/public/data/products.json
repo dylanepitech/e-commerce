@@ -2,23 +2,23 @@
   "categories": [
     {
       "id": 1,
-      "name": "Cuisines"
+      "title": "Cuisines"
     },
     {
       "id": 2,
-      "name": "Salles de bain"
+      "title": "Salles de bain"
     },
     {
       "id": 3,
-      "name": "Salons"
+      "title": "Salons"
     },
     {
       "id": 4,
-      "name": "Gros électroménager"
+      "title": "Gros électroménager"
     },
     {
       "id": 5,
-      "name": "Petit électroménager"
+      "title": "Petit électroménager"
     }
   ],
   "products": [
@@ -26,7 +26,6 @@
       "id": 1,
       "categories_id": 1,
       "image": "src/assets/picture/cuisine1.png",
-
       "title": "Sobre",
       "price": 1000,
       "size": "petit"

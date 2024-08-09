@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaUser, FaHeart, FaCartShopping } from "react-icons/fa6";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Menu, ListX } from "lucide-react";
 import logo from "../assets/picture/logo.png";
 import cuisine from "../assets/picture/cuisine1.png";
@@ -60,7 +60,7 @@ const Header: React.FC = () => {
             <FaHeart className="text-base md:text-xl" />
             <span className="absolute top-0 right-0 h-2 w-2 bg-red-700 rounded-full"></span>
           </a>
-          <a href="#" className="relative flex items-center">
+          <a href="/cart" className="relative flex items-center">
             <FaCartShopping className="text-base md:text-xl" />
             <span className="absolute top-0 right-0 h-2 w-2 bg-red-700 rounded-full"></span>
           </a>
@@ -107,7 +107,10 @@ const Header: React.FC = () => {
       >
         <div className=" text-black p-4 shadow-2xl ">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            <Link to="/category/cuisines"  className="flex flex-col items-center">
+            <Link
+              to="/category/cuisines"
+              className="flex flex-col items-center"
+            >
               <h2 className="text-l font-bold mb-3 text-white">Nos cuisines</h2>
               <img
                 src={cuisine}
@@ -116,7 +119,10 @@ const Header: React.FC = () => {
               />
             </Link>
 
-            <Link to="/category/salle-de-bain" className="flex flex-col items-center">
+            <Link
+              to="/category/salles-de-bain"
+              className="flex flex-col items-center"
+            >
               <h2 className="text-l font-bold mb-3 text-white">
                 Nos salles de bain
               </h2>
@@ -136,7 +142,10 @@ const Header: React.FC = () => {
               />
             </Link>
 
-            <Link to="/category/gros-electromenagers" className="flex flex-col items-center">
+            <Link
+              to="/category/gros-electromenagers"
+              className="flex flex-col items-center"
+            >
               <h2 className="text-l font-bold mb-3 text-white">
                 Nos gros électroménagers
               </h2>
@@ -147,7 +156,10 @@ const Header: React.FC = () => {
               />
             </Link>
 
-            <Link to="/category/petit-electromenagers" className="flex flex-col items-center">
+            <Link
+              to="/category/petits-electromenagers"
+              className="flex flex-col items-center"
+            >
               <h2 className="text-l font-bold mb-3 text-white">
                 Nos petits électroménagers
               </h2>

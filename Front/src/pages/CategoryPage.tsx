@@ -4,8 +4,8 @@ import FilterButton from "../components/FilterButton";
 import ProductGrid from "../components/ProductGrid";
 import Pagination from "../components/Pagination";
 import Footer from "../components/Footer";
-import { useParams } from 'react-router-dom';
-import { AuthContext } from "../hooks/AuthContext"; 
+import { useParams } from "react-router-dom";
+import { AuthContext } from "../hooks/AuthContext";
 import "../index.css";
 import cuisine from "../assets/picture/cuisine1.png";
 import image1 from "../assets/picture/image1.png";
@@ -18,7 +18,6 @@ interface Product {
   image: string;
   title: string;
   price: number;
-  size: string;
 }
 
 const CategoryPage = () => {
@@ -30,26 +29,25 @@ const CategoryPage = () => {
     max: number;
     current: number;
   }>({ min: 0, max: 0, current: 0 });
-  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
-  const [availableSizes, setAvailableSizes] = useState<string[]>([]);
+  const [priceOrder, setPriceOrder] = useState<"asc" | "desc">("asc");
+  const [searchTerm, setSearchTerm] = useState("");
   const productsPerPage = 6;
   const { category } = useParams();
   const { authToken } = useContext(AuthContext);
-  const formattedCategory = category ? category.replace(/-/g, ' ').toUpperCase() : "";
+  const formattedCategory = category
+    ? category.replace(/-/g, " ").toUpperCase()
+    : "";
 
   useEffect(() => {
-    if(authToken){
-
+    if (authToken) {
       console.log("Token:", authToken);
     }
-    
   }, [authToken]);
-
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("../data/products.json");
+        const response = await fetch("./data/products.json");
         if (!response.ok) {
           throw new Error();
         }
@@ -58,14 +56,9 @@ const CategoryPage = () => {
         setFilteredProducts(data.products);
 
         const prices = data.products.map((p: Product) => p.price);
-        const minPrice = Math.min(...prices);
+        const minPrice = 0;
         const maxPrice = Math.max(...prices);
         setPriceRange({ min: minPrice, max: maxPrice, current: minPrice });
-
-        const sizes = [
-          ...new Set(data.products.map((p: Product) => p.size)),
-        ] as string[];
-        setAvailableSizes(sizes);
       } catch (error) {
         console.error("erreur", error);
       }
@@ -82,13 +75,21 @@ const CategoryPage = () => {
         product.price >= priceRange.current && product.price <= priceRange.max
     );
 
-    if (selectedSizes.length > 0) {
-      result = result.filter((product) => selectedSizes.includes(product.size));
+    if (searchTerm.trim() !== "") {
+      result = result.filter((product) =>
+        product.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (priceOrder === "desc") {
+      result = result.sort((a, b) => b.price - a.price);
+    } else {
+      result = result.sort((a, b) => a.price - b.price);
     }
 
     setFilteredProducts(result);
     setCurrentPage(1);
-  }, [products, priceRange.current, selectedSizes]);
+  }, [products, priceRange.current, priceOrder, searchTerm]);
 
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
@@ -105,12 +106,6 @@ const CategoryPage = () => {
     setPriceRange((prev) => ({ ...prev, current: Number(event.target.value) }));
   };
 
-  const handleSizeChange = (size: string) => {
-    setSelectedSizes((prev) =>
-      prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
-    );
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
       <div className="bg-green-vertical">
@@ -118,7 +113,6 @@ const CategoryPage = () => {
         <div className="flex justify-center p-5">
           <div className="flex w-full max-w-6xl justify-center">
             <div className="w-[1000px] h-[400px] p-5 bg-white border border-white shadow-lg rounded-lg mr-8">
-
               <h2 className="mb-4 text-3xl font-bold gotham-bold-font mt-3">
                 NOS {formattedCategory}
               </h2>
@@ -150,9 +144,9 @@ const CategoryPage = () => {
         <br></br>
       </div>
       <div className="flex flex-col items-center p-5 bg-white w-full mt-2">
-        <div className="flex space-x-12">
-          <FilterButton label="Prix">
-            <div className="px-4 py-2">
+        <div className="flex items-center justify-between w-full max-w-6xl">
+          <FilterButton label="Trier par prix">
+            <div className="px-4 py-2 bg-white shadow-lg rounded-md w-[300px] border border-gray-300">
               <input
                 type="range"
                 min={priceRange.min}
@@ -161,26 +155,58 @@ const CategoryPage = () => {
                 onChange={handlePriceChange}
                 className="w-full"
               />
-              <p>
+              <p className="text-gray-700 font-medium">
                 Prix: {priceRange.current}€ - {priceRange.max}€
               </p>
+              <div
+                className="flex items-center mt-2 cursor-pointer"
+                onClick={() => setPriceOrder("asc")}
+              >
+                <input
+                  type="radio"
+                  name="price-order"
+                  checked={priceOrder === "asc"}
+                  onChange={() => setPriceOrder("asc")}
+                  className="mr-2 text-green-light"
+                />
+                <span className="text-gray-700">Par prix croissant</span>
+              </div>
+              <div
+                className="flex items-center mt-2 cursor-pointer"
+                onClick={() => setPriceOrder("desc")}
+              >
+                <input
+                  type="radio"
+                  name="price-order"
+                  checked={priceOrder === "desc"}
+                  onChange={() => setPriceOrder("desc")}
+                  className="mr-2 text-green-light"
+                />
+                <span className="text-gray-700">Par prix décroissant</span>
+              </div>
             </div>
           </FilterButton>
-          <FilterButton label="Taille">
-            <div className="px-4 py-2">
-              {availableSizes.map((size) => (
-                <label key={size} className="flex items-center">
-                  <input
-                    type="checkbox"
-                    checked={selectedSizes.includes(size)}
-                    onChange={() => handleSizeChange(size)}
-                    className="mr-2"
-                  />
-                  {size}
-                </label>
-              ))}
-            </div>
-          </FilterButton>
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Rechercher un produit"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="px-5 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-light"
+            />
+            <svg
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
         </div>
         <br></br>
         <br></br>

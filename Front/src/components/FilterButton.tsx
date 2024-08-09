@@ -12,7 +12,7 @@ const FilterButton: React.FC<FilterButtonProps> = ({ label, children }) => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="px-4 py-2 rounded-full border bg-green-light text-white flex items-center"
+        className={`px-4 py-2 rounded-full border bg-green-light text-white flex items-center `}
       >
         {label}
         <svg

@@ -23,6 +23,7 @@ import TestOrders from "./test/testOrders";
 import TestReductions from "./test/testReduction";
 import TestWishlists from "./test/testWishlist";
 import RestrictedRoute from "./hooks/RestrictedRoute";
+import CartPage from "./pages/CartPage";
 
 
 const AppRoutes: React.FC = () => {
@@ -49,6 +50,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/cgvcgu" element={<CGVCGUPage />} />
         <Route path="/resetpwd" element={<ResetPwdPage />} />
         <Route path="/resetpwdbis" element={<ResetPwdBisPage />} />
+        <Route path="/cart" element={<CartPage />} />
 
         {/* Routes User connecter */}
         <Route element={<ProtectedRoute />}>
